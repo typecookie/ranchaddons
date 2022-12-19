@@ -1,12 +1,12 @@
 {
-    'name': 'Ranch',
+    'name': 'Guestlist',
     'version': '0.1',
-    'category': 'Hidden',
+    "category": "Hidden",
     'description': """
 ===================================================
 """,
-    'depends': ["contacts"],
+    'depends': ["contacts", "Hotel"],
     'data': [
-        'views/ranch_contact_fields_view.xml',
+        'views/guest-list.xml',
     ],
 }
