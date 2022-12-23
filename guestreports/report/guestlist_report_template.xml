@@ -1,0 +1,36 @@
+<odoo>
+    <template id="guestlist_report_document">
+        <t t-call="web.basic_layout">
+            <div class="container">
+                <table class="table">
+                    <t t-foreach="docs" t-as="doc"><!-- for Loop -->
+                        <tr>
+                            <td>
+                                <span t-esc="doc['name']"></span>
+                                <span class="text-right" t-esc="doc['rooms']"></span>
+                            </td>
+                        </tr>
+                        <t t-foreach="doc['member_list']" t-as="member">
+                            <tr>
+                                <td>
+                                    <span t-esc="member['name']"/><br/>
+                                    Height: <span t-esc="member['height']"/><br/>
+                                    Birthdate: <span t-esc="member['birthdate']"/><br/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <record id="guestlist_report" model="ir.actions.report">
+        <field name="name">Guest List Report</field>
+        <field name="model">guestlist.report.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">guestreports.guestlist_report_document</field>
+        <field name="report_file">guestreports.guestlist_report_document</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+         <record id="guestlist_report_wizard" model="ir.ui.view">
+            <field name="name">Guest List Report</field>
+            <field name="model">guestlist.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="start_date" required="1"/>
+                        <field name="end_date" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="get_report" string="Get Report" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" type="object" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_guestlist_report_wizard" model="ir.actions.act_window">
+            <field name="name">Guest List Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">guestlist.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
