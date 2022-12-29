@@ -2,8 +2,8 @@ from odoo import api, exceptions, fields, models, _
 from odoo.exceptions import ValidationError
 
 
-class GuestListReportWizard(models.TransientModel):
-    _name = "guestlist.report.wizard"
+class GuestListDisplayReportWizard(models.TransientModel):
+    _name = "guestlist.display.report.wizard"
 
     start_date = fields.Datetime('Start Date')
     end_date = fields.Datetime('End Date')
@@ -21,11 +21,11 @@ class GuestListReportWizard(models.TransientModel):
                 }
             }
 
-            return self.env.ref('guestreports.guestlist_report').report_action(self, data=data)
+            return self.env.ref('guestreports.guestlist_display_report').report_action(self, data=data)
 
 
 class ReportGuestListReport(models.AbstractModel):
-    _name = 'report.guestreports.guestlist_report_document'
+    _name = 'report.guestreports.guestlist_display_report_document'
 
     @api.model
     def _get_report_values(self, docids, data=None):
@@ -38,7 +38,7 @@ class ReportGuestListReport(models.AbstractModel):
 
             member_list = []
             for member in reservation.partner_id.child_ids:
-                ## odoo takes care of joins/ foren keys
+                # odoo takes care of joins/ foren keys
                 member_list.append({
                     'name': member.name,
                     'height': member.Height,
@@ -70,6 +70,8 @@ class ReportGuestListReport(models.AbstractModel):
                 'deposit_request_sent': reservation.partner_id.deposit_request_sent,
                 'deposit_request_received': reservation.partner_id.deposit_request_received,
                 'deposit_request_received_date': reservation.partner_id.deposit_request_received_date,
+                'city': reservation.partner_id.city,
+                'state': reservation.partner_id.state_id.name
             })
 
         return {

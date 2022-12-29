@@ -1,0 +1,39 @@
+<odoo>
+    <template id="guestlist_display_report_document">
+        <t t-call="web.basic_layout">
+            <div class="container">
+                <table class="table">
+                    <t t-foreach="docs" t-as="doc"><!-- for Loop -->
+                        <tr>
+                            <td>
+                                <span t-esc="doc['name']"/><br/>
+                                <t t-foreach="doc['member_list']" t-as="member">
+
+                                    <span t-esc="member['name']" />
+                                    <t t-if="member['age'] &lt; 21">
+                                        <span t-esc="member['age']"  attrs="{'invisible': [(member['age']', '>=', 21)]}"/>
+                                    </t>
+                                    <br/>
+                        </t>
+                            </td>
+                            <td>
+                                <span t-esc="doc['rooms']"/><br/>
+                                Number Of Years: <span t-esc="doc['number_of_years_return']"/><br/>
+                                <span t-esc="doc['city']"/>  <span class="o_address_state" t-esc="doc['state']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <record id="guestlist_display_report" model="ir.actions.report">
+        <field name="name">Guest List Display Report</field>
+        <field name="model">guestlist.display.report.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">guestreports.guestlist_display_report_document</field>
+        <field name="report_file">guestreports.guestlist_display_report_document</field>
+    </record>
+
+</odoo>

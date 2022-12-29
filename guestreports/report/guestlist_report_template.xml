@@ -6,8 +6,11 @@
                     <t t-foreach="docs" t-as="doc"><!-- for Loop -->
                         <tr>
                             <td>
-                                <span t-esc="doc['name']"></span>
-                                <span class="text-right" t-esc="doc['rooms']"></span>
+                                <span t-esc="doc['name']"/>
+                            </td>
+                            <td colspan="2">
+                                <span t-esc="doc['rooms']"/><br/>
+                                Number Of Years: <span t-esc="doc['number_of_years_return']"/>
                             </td>
                         </tr>
                         <t t-foreach="doc['member_list']" t-as="member">
@@ -15,10 +18,34 @@
                                 <td>
                                     <span t-esc="member['name']"/><br/>
                                     Height: <span t-esc="member['height']"/><br/>
-                                    Birthdate: <span t-esc="member['birthdate']"/><br/>
+                                    Weight: <span t-esc="member['weight']"/><br/>
+                                    Age: <span t-esc="member['age']"/><br/>
+                                    Sex: <span t-esc="member['sex']"/><br/>
+                                </td>
+                                <td>
+                                    Experience: <span t-esc="member['experience']"/><br/>
+                                    horse_request: <span t-esc="member['horse_request']"/><br/>
+                                    horse_assigned: <span t-esc="member['horse_assigned']"/><br/>
+                                    saddle_request: <span t-esc="member['saddle_request']"/><br/>
+                                    saddle_assigned: <span t-esc="member['saddle_assigned']"/><br/>
+                                </td>
+                                <td>
+                                    dietary_needs: <span t-esc="member['dietary_needs']"/><br/>
+                                    food_allergies: <span t-esc="member['food_allergies']"/><br/>
+                                    health_conditions: <span t-esc="member['health_conditions']"/><br/>
+                                    health_conditions: <span t-esc="member['health_conditions']"/><br/>
                                 </td>
                             </tr>
                         </t>
+                        <tr>
+                            <td>
+                                Is Cabin Owner <span t-esc="doc['cabin_owner']"/><br/>
+                                Cabin Preference <span t-esc="doc['cabin_preference']"/><br/>
+                                deposit request sent<span t-esc="doc['deposit_request_sent']"/><br/>
+                                deposit request received <span t-esc="doc['deposit_request_received']"/><br/>
+                                deposit request received date <span t-esc="doc['deposit_request_received_date']"/><br/>
+                            </td>
+                        </tr>
                     </t>
                 </table>
             </div>

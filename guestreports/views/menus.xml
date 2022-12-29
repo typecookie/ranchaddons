@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
    <data>
-       <menuitem id="menu_guestlist_report" name="Guest List Report" parent="hotel.hotel_report_menu" action="action_guestlist_report_wizard"/>
+       <menuitem id="menu_guestlist_report" name="Guest List Report" parent="hotel.hotel_report_menu"
+                 action="action_guestlist_report_wizard"/>
+       <menuitem id="menu_guestlist_display_report" name="Guest List Display Report" parent="hotel.hotel_report_menu"
+                 action="action_guestlist_display_report_wizard"/>
    </data>
 </odoo>

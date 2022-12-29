@@ -1,8 +1,8 @@
 {
     'name': 'Ranch',
-    'version': '0.1',
+    'version': 'rc-0.3',
     'category': 'Hidden',
-    'description': """
+    'description': """Ranch related fields for partners
     "author": "typecookie"
     "summary": "ranchAddons"
 ===================================================

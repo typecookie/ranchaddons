@@ -1,1 +1,1 @@
-from . import addons
+from . import models
