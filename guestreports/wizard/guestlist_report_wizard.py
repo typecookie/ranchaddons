@@ -70,6 +70,8 @@ class ReportGuestListReport(models.AbstractModel):
                 'deposit_request_sent': reservation.partner_id.deposit_request_sent,
                 'deposit_request_received': reservation.partner_id.deposit_request_received,
                 'deposit_request_received_date': reservation.partner_id.deposit_request_received_date,
+                'anniversaries': reservation.partner_id.anniversaries,
+                'birthdays': reservation.partner_id.birthdays,
             })
 
         return {

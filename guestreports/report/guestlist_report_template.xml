@@ -39,15 +39,15 @@
                         </t>
                         <tr>
                             <td>
-                                <t t-if="doc['cabin_owner'] = 'True'">
+                                <!--<t t-if="doc['cabin_owner'] = True">-->
                                     Is Cabin Owner: <span t-esc="doc['cabin_owner']"/><br/>
-                                </t>
+                                <!--</t>-->
                                 Cabin Preference: <span t-esc="doc['cabin_preference']"/><br/>
                                 deposit request sent: <span t-esc="doc['deposit_request_sent']"/><br/>
                                 deposit request received: <span t-esc="doc['deposit_request_received']"/><br/>
                                 deposit request received date: <span t-esc="doc['deposit_request_received_date']"/><br/>
-                                Birthdays" <span t-esc="doc['birthdays']"/><br/>
-                                Anniversaries" <span t-esc="doc['birthdays']"/>
+                                Birthdays: <span t-esc="doc['birthdays']"/><br/>
+                                Anniversaries: <span t-esc="doc['anniversaries']"/>
                             </td>
                         </tr>
                     </t>
