@@ -1,0 +1,50 @@
+<odoo>
+    <template id="guestlist_kitchen_report_document">
+        <t t-call="web.basic_layout">
+            <div class="container">
+                <table class="table">
+                    <t t-foreach="docs" t-as="doc"><!-- for Loop -->
+                        <tr>
+                            <td>
+                                <span t-esc="doc['name']"/>
+                            </td>
+                            <td colspan="2">
+                                <span t-esc="doc['rooms']"/><br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Birthdays: <span t-esc="doc['birthdays']"/><br/>
+                                Anniversaries: <span t-esc="doc['anniversaries']"/>
+                            </td>
+                        </tr>
+                        <t t-foreach="doc['member_list']" t-as="member">
+                            <tr>
+                                <td>
+                                    <span t-esc="member['name']"/><br/>
+                                    Age: <span t-esc="member['age']"/><br/>
+                                    Sex: <span t-esc="member['sex']"/><br/>
+                                </td>
+                                <td>
+                                    Food Allergies: <span t-esc="member['food_allergies']"/><br/>
+                                    Dietary Needs: <span t-esc="member['dietary_needs']"/><br/>
+                                    Health Conditions: <span t-esc="member['health_conditions']"/><br/>
+                                    Health Requests: <span t-esc="member['health_requests']"/><br/>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <record id="guestlist_kitchen_report" model="ir.actions.report">
+        <field name="name">Guest List kitchen Report</field>
+        <field name="model">guestlist.kitchen.report.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">guestreports.guestlist_kitchen_report_document</field>
+        <field name="report_file">guestreports.guestlist_kitchen_report_document</field>
+    </record>
+
+</odoo>

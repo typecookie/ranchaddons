@@ -1,5 +1,5 @@
 <odoo>
-    <template id="guestlist_report_document">
+    <template id="guestlist_barn_report_document">
         <t t-call="web.basic_layout">
             <div class="container">
                 <table class="table">
@@ -10,7 +10,6 @@
                             </td>
                             <td colspan="2">
                                 <span t-esc="doc['rooms']"/><br/>
-                                Number Of Years: <span t-esc="doc['number_of_years_return']"/>
                             </td>
                         </tr>
                         <t t-foreach="doc['member_list']" t-as="member">
@@ -30,38 +29,24 @@
                                     Saddle Assigned: <span t-esc="member['saddle_assigned']"/><br/>
                                 </td>
                                 <td>
-                                    Dietary Needs: <span t-esc="member['dietary_needs']"/><br/>
                                     Food Allergies: <span t-esc="member['food_allergies']"/><br/>
                                     Health Conditions: <span t-esc="member['health_conditions']"/><br/>
                                     Health Requests: <span t-esc="member['health_requests']"/><br/>
                                 </td>
                             </tr>
                         </t>
-                        <tr>
-                            <td>
-                                <!--<t t-if="doc['cabin_owner'] = True">-->
-                                    Is Cabin Owner: <span t-esc="doc['cabin_owner']"/><br/>
-                                <!--</t>-->
-                                Cabin Preference: <span t-esc="doc['cabin_preference']"/><br/>
-                                deposit request sent: <span t-esc="doc['deposit_request_sent']"/><br/>
-                                deposit request received: <span t-esc="doc['deposit_request_received']"/><br/>
-                                deposit request received date: <span t-esc="doc['deposit_request_received_date']"/><br/>
-                                Birthdays: <span t-esc="doc['birthdays']"/><br/>
-                                Anniversaries: <span t-esc="doc['anniversaries']"/>
-                            </td>
-                        </tr>
                     </t>
                 </table>
             </div>
         </t>
     </template>
 
-    <record id="guestlist_report" model="ir.actions.report">
-        <field name="name">Guest List Report</field>
-        <field name="model">guestlist.report.wizard</field>
+    <record id="guestlist_barn_report" model="ir.actions.report">
+        <field name="name">Guest List Barn Report</field>
+        <field name="model">guestlist.barn.report.wizard</field>
         <field name="report_type">qweb-html</field>
-        <field name="report_name">guestreports.guestlist_report_document</field>
-        <field name="report_file">guestreports.guestlist_report_document</field>
+        <field name="report_name">guestreports.guestlist_barn_report_document</field>
+        <field name="report_file">guestreports.guestlist_barn_report_document</field>
     </record>
 
 </odoo>

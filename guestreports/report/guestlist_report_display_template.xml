@@ -19,6 +19,9 @@
                             <td>
                                 <span t-esc="doc['rooms']"/><br/>
                                 Number Of Years: <span t-esc="doc['number_of_years_return']"/><br/>
+                                <!--<t t-foreach="year_stars" t-as="star">
+                                    star:<span t-esc="star[per_star']"/>
+                                </t>-->
                                 <span t-esc="doc['city']"/>  <span class="o_address_state" t-esc="doc['state']"/>
                             </td>
                         </tr>

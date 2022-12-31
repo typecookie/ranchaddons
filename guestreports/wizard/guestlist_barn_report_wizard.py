@@ -1,9 +1,9 @@
 from odoo import api, exceptions, fields, models, _
 from odoo.exceptions import ValidationError
+import random
 
-
-class GuestListDisplayReportWizard(models.TransientModel):
-    _name = "guestlist.display.report.wizard"
+class GuestListBarnReportWizard(models.TransientModel):
+    _name = "guestlist.barn.report.wizard"
 
     start_date = fields.Datetime('Start Date')
     end_date = fields.Datetime('End Date')
@@ -21,11 +21,11 @@ class GuestListDisplayReportWizard(models.TransientModel):
                 }
             }
 
-            return self.env.ref('guestreports.guestlist_display_report').report_action(self, data=data)
+            return self.env.ref('guestreports.guestlist_barn_report').report_action(self, data=data)
 
 
-class ReportGuestListReport(models.AbstractModel):
-    _name = 'report.guestreports.guestlist_display_report_document'
+class ReportGuestListBarnReport(models.AbstractModel):
+    _name = 'report.guestreports.guestlist_barn_report_document'
 
     @api.model
     def _get_report_values(self, docids, data=None):
@@ -81,5 +81,3 @@ class ReportGuestListReport(models.AbstractModel):
             'doc_model': data['model'],
             'docs': docs,
         }
-
-

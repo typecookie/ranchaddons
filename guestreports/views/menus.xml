@@ -5,5 +5,9 @@
                  action="action_guestlist_report_wizard"/>
        <menuitem id="menu_guestlist_display_report" name="Guest List Display Report" parent="hotel.hotel_report_menu"
                  action="action_guestlist_display_report_wizard"/>
+       <menuitem id="menu_guestlist_barn_report" name="Guest List Barn Report" parent="hotel.hotel_report_menu"
+                 action="action_guestlist_barn_report_wizard"/>
+       <menuitem id="menu_guestlist_kitchen_report" name="Guest List Kitchen Report" parent="hotel.hotel_report_menu"
+                 action="action_guestlist_kitchen_report_wizard"/>
    </data>
 </odoo>

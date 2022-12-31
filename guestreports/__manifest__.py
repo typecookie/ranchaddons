@@ -12,8 +12,11 @@
         'report/guestlist_report_template.xml',
         'wizard/guestlist_display_report_wizard_view.xml',
         'report/guestlist_report_display_template.xml',
+        'wizard/guestlist_kitchen_report_wizard_view.xml',
+        'report/guestlist_report_kitchen_template.xml',
+        'wizard/guestlist_barn_report_wizard_view.xml',
+        'report/guestlist_report_barn_template.xml',
         'views/menus.xml',
-
     ],
     'installable': True,
     'auto_install': False,
