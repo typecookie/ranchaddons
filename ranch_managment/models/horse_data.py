@@ -18,6 +18,7 @@ class HorseData(models.Model):
     purchase_date = fields.Date()
     guest_use = fields.Boolean()
     wrangler_use = fields.Boolean()
+    bridle_data = fields.Char()
 
     @api.depends("horse_birth_date")
     def _compute_age(self):
