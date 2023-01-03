@@ -3,14 +3,14 @@ from dateutil.relativedelta import relativedelta
 
 
 class HorseData(models.Model):
-    _name = 'ranch_managment.data'
-    _description = "List guest by week"
+    _name = 'horse.data'
+    _description = "Horse Database"
     _inherit = 'image.mixin'
 
     name = fields.Char('Name', required=True)
     horse_birth_date = fields.Date("Birthdate")
     age = fields.Integer(string="Age", readonly=True, compute="_compute_age")
-    advanced = fields.Boolean(string="skill level")
+    advanced = fields.Boolean()
     beginner = fields.Boolean()
     intermediate = fields.Boolean()
     brands = fields.Char()
