@@ -1,13 +1,15 @@
 {
-    'name': 'Horses',
+    'name': 'HorseData',
     'version': '0.1',
-    'description': """
     'category': 'Tools',
+    'description': """
+    "author": "typecookie"
+    "summary": "ranchAddons"
 ===================================================
 """,
-    'depends': [],
+    'depends': ["hotel"],
     'data': [
-
+        'views/horses_main_view.xml'
     ],
     'installable': True,
     'auto_install': False,
