@@ -79,5 +79,3 @@ class ReportGuestListReport(models.AbstractModel):
             'doc_model': data['model'],
             'docs': docs,
         }
-
-

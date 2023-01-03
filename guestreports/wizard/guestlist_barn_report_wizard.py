@@ -2,6 +2,7 @@ from odoo import api, exceptions, fields, models, _
 from odoo.exceptions import ValidationError
 import random
 
+
 class GuestListBarnReportWizard(models.TransientModel):
     _name = "guestlist.barn.report.wizard"
 
