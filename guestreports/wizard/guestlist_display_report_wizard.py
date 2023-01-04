@@ -60,12 +60,13 @@ class ReportGuestListReport(models.AbstractModel):
             room_list = reservation.reservation_line.mapped('reserve.name')  # ['a', 'b', 'c']
             rooms = ', '.join(map(str, room_list))  # a, b, c
 
+
             docs.append({
                 'name': reservation.partner_id.name,
                 'rooms': rooms,
                 'member_list': member_list,
                 'cabin_owner': reservation.partner_id.cabin_owner,
-                'number_of_years_return': reservation.partner_id.number_of_years_return,
+                'number_of_years_return': int(reservation.partner_id.number_of_years_return),
                 'cabin_preference': reservation.partner_id.cabin_preference,
                 'deposit_request_sent': reservation.partner_id.deposit_request_sent,
                 'deposit_request_received': reservation.partner_id.deposit_request_received,
@@ -74,6 +75,7 @@ class ReportGuestListReport(models.AbstractModel):
                 'state': reservation.partner_id.state_id.name,
                 'anniversaries': reservation.partner_id.anniversaries,
                 'birthdays': reservation.partner_id.birthdays,
+                'partner': reservation.partner_id,
             })
 
         return {

@@ -18,10 +18,11 @@
                             </td>
                             <td>
                                 <span t-esc="doc['rooms']"/><br/>
-                                Number Of Years: <span t-esc="doc['number_of_years_return']"/><br/>
-                                <!--<t t-foreach="year_stars" t-as="star">
-                                    star:<span t-esc="star[per_star']"/>
-                                </t>-->
+                                Years:
+                                <t t-foreach="range(doc['number_of_years_return'])" t-as="star">
+                                    <t t-set="color" t-value="doc['partner'].get_random_color()"/>
+                                    <span class="fa fa-star" t-att-style="'color: %s;' % color"/><br/>
+                                </t>
                                 <span t-esc="doc['city']"/>  <span class="o_address_state" t-esc="doc['state']"/>
                             </td>
                         </tr>
