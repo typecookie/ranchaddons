@@ -3,5 +3,6 @@
    <data>
        <menuitem name="Ranch Management" id="ranch_management_base_menu" />
        <menuitem name="Horses" id="horse_data_menu" parent="ranch_management_base_menu" action="horse_data_action" />
+       <menuitem name="Saddles" id="saddle_data_menu" parent="ranch_management_base_menu" action="saddle_data_action" />
    </data>
 </odoo>

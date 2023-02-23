@@ -29,7 +29,7 @@
                                  <field name="advanced" attrs="{'invisible': [('guest_use', '!=', True)]}" />
                                  <field name="intermediate" attrs="{'invisible': [('guest_use', '!=', True)]}" />
                                  <field name="beginner" attrs="{'invisible': [('guest_use', '!=', True)]}"/>
-                                 <field name="bridle_data" />
+                                 <field name="bridle_data"/>
                              </group>
                          </td>
                          <td>

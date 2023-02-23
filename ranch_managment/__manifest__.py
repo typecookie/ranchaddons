@@ -1,6 +1,6 @@
 {
     'name': 'Ranch Management',
-    'version': '0.1',
+    'version': 'rc-0.3',
     'category': 'Tools',
     'description': """
     "author": "typecookie"
@@ -9,8 +9,12 @@
 """,
     'depends': [],
     'data': [
+        'security/ir.model.access.csv',
         'views/horses_main_view.xml',
-        'views/menus.xml'
+        'views/saddle_main_view.xml',
+        'views/menus.xml',
+        'views/company_ranch_date_view.xml',
+
     ],
     'installable': True,
     'auto_install': False,

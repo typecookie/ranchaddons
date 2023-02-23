@@ -1,6 +1,6 @@
 {
     'name': 'Guestlist',
-    'version': '0.2',
+    'version': '0.5',
     'description': """
     'category': 'Tools',
 ===================================================

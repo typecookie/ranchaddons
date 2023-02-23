@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_horses_main_view,access_horses_main_view,model_horse_data,base.group_user,1,1,1,1
+access_menus,access_menus,model_horse_data,base.group_user,1,1,1,1
+access_saddle_main_view,access_saddle_main_view,model_saddle_data,base.group_user,1,1,1,1

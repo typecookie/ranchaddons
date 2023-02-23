@@ -46,6 +46,14 @@
                     </group>
 
                 </page>
+                <page string="reservatins">
+                    <!--
+                    Attempt to get the bookings added here
+                    !-->
+                </page>
+                <!--
+                if the above works remove me also remove when i am able to add travel to the booking
+                !-->
                 <page string="Travel" attrs="{'invisible': [('is_company', '=', False)]}">
                     <group>
                         <field name="is_driving"/>
