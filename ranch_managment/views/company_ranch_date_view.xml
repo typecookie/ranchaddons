@@ -8,6 +8,8 @@
             <xpath expr="//field[@name='vat']" position="after">
                 <field name="first_guest_week"/>
                 <field name="last_guet_week"/>
+                <field name="checkin_time"/>
+                <field name="checkout_time"/>
             </xpath>
         </field>
     </record>
