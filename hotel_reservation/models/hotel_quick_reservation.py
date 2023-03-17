@@ -10,7 +10,7 @@ class QuickRoomReservation(models.TransientModel):
 
     partner_id = fields.Many2one("res.partner", "Customer", required=True)
     check_in = fields.Datetime("Check In", required=True,)
-    check_out = fields.Datetime("Check Out", required=True, default=fields.Datetime.now().replace(hour=8))
+    check_out = fields.Datetime("Check Out", required=True)
     room_id = fields.Many2one("hotel.room", "Room", required=True)
     company_id = fields.Many2one("res.company", "Hotel", required=True)
     pricelist_id = fields.Many2one("product.pricelist", "pricelist")

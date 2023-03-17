@@ -7,7 +7,7 @@
     "summary": "ranchAddons"
 ===================================================
 """,
-    'depends': [],
+    'depends': ['mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/horses_main_view.xml',

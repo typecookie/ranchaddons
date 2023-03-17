@@ -5,10 +5,11 @@ from dateutil.relativedelta import relativedelta
 class HorseData(models.Model):
     _name = 'horse.data'
     _description = "Horse Database"
-    _inherit = 'image.mixin'
+    # _inherit = 'image.mixin'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char('Name', required=True)
-    horse_birth_date = fields.Date("Birthdate")
+    name = fields.Char('Name', required=True, tracking=True)
+    horse_birth_date = fields.Date("Birthdate", tracking=True)
     age = fields.Integer(string="Age", readonly=True, compute="_compute_age")
     advanced = fields.Boolean()
     beginner = fields.Boolean()

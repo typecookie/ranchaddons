@@ -178,7 +178,7 @@ class RoomReservationSummary(models.Model):
                         )
                 else:
                     for chk_date in date_range_list:
-                        ch_dt = chk_date[:15] + " 23:59:59"
+                        ch_dt = chk_date[:10] + " 23:59:59"
                         ttime = datetime.strptime(ch_dt, dt)
                         c = ttime.replace(tzinfo=timezone).astimezone(
                             pytz.timezone("UTC")
@@ -190,7 +190,7 @@ class RoomReservationSummary(models.Model):
                                 ("id", "in", reserline_ids),
                                 ("check_in", "<=", chk_date),
                                 ("check_out", ">=", chk_date),
-                                ("state", "=", "draft"),
+                                ("state", "=", "assigned"),
                             ]
                         )
                         if not reservline_ids:
@@ -264,26 +264,26 @@ class RoomReservationSummary(models.Model):
                                 ("status", "not in", chk_state),
                             ]
                         )
-                        draft_resrv_ids = draft_line_obj.search(
-                            [
-                                ("check_in", "<=", chk_date),
-                                ("check_out", ">=", chk_date),
-                                ("status", "in", chk_state2),
-                            ]
-                        )
-                        print(draft_line_obj)
-                        if draft_resrv_ids:
-                            room_list_stats.append(
-                                {
-                                    "state": "Reserved",
-                                    "date": chk_date,
-                                    "room_id": room.id,
-                                    "is_draft": "Yes",
-                                    "data_model": "",
-                                    "data_id": 0,
-                                }
-                            )
-                        elif reservline_ids or folio_resrv_ids:
+                        # draft_resrv_ids = draft_line_obj.search(
+                        #     [
+                        #         ("check_in", "<=", chk_date),
+                        #         ("check_out", ">=", chk_date),
+                        #         ("status", "in", chk_state2),
+                        #     ]
+                        # )
+                        # print(draft_line_obj)
+                        # if draft_resrv_ids:
+                        #     room_list_stats.append(
+                        #         {
+                        #             "state": "Reserved",
+                        #             "date": chk_date,
+                        #             "room_id": room.id,
+                        #             "is_draft": "Yes",
+                        #             "data_model": "",
+                        #             "data_id": 0,
+                        #         }
+                        #     )
+                        if reservline_ids:
                             room_list_stats.append(
                                 {
                                     "state": "Reserved",

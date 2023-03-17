@@ -7,9 +7,13 @@
     "summary": "ranchAddons"
 ===================================================
 """,
-    'depends': ["contacts"],
+    'depends': ["contacts", "hotel_reservation"],
     'data': [
+        "security/ir.model.access.csv",
+        'wizards/horse_assign_wizard_views.xml',
+        'wizards/horse_assign_update_wizard_views.xml',
         'views/ranch_contact_fields_view.xml',
+        'views/horse_assign_data_views.xml',
     ],
     "installable": True,
 

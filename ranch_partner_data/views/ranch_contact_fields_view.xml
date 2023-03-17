@@ -5,6 +5,13 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
+
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button string="Assign Horse" name="%(action_horse_assign_wizard)d" type="action"/>
+                </header>
+            </xpath>
+
             <xpath expr="//field[@name='vat']" position="after">
                 <field name="Sex" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="Height" attrs="{'invisible': [('is_company', '=', True)]}"/>
@@ -12,7 +19,7 @@
                 <field name="Exp" attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='birthdate_date' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='horse_request' attrs="{'invisible': [('is_company', '=', True)]}" />
-                <field name='horse_assigned' attrs="{'invisible': [('is_company', '=', True)]}" />
+                <field name='horse_assigned' attrs="{'invisible': [('is_company', '=', True)]}" readonly="1"/>
                 <field name='saddle_request' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='saddle_assigned' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name="age" attrs="{'invisible': [('birthdate_date', '=', False)]}"/>
@@ -46,10 +53,35 @@
                     </group>
 
                 </page>
-                <page string="reservatins">
+                <page string="Reservations">
                     <!--
                     Attempt to get the bookings added here
                     !-->
+                    <field name="reservation_ids" readonly="1">
+                        <tree>
+                            <field name="reservation_no" />
+                            <field name="reservation_line" widget="many2many_tags" string="Rooms"/>
+                            <field name="partner_id" />
+                            <field name="checkin" />
+                            <field name="checkout" />
+                            <field name="state" />
+                        </tree>
+                    </field>
+                </page>
+                <page string="Horses Assign">
+                    <!--
+                    Attempt to get the bookings added here
+                    !-->
+                    <field name="horse_assign_ids" readonly="1">
+                        <tree>
+                            <field name="partner_id" invisible="1"/>
+                            <field name="horse_id" required="1"/>
+                            <field name="start_date" required="1"/>
+                            <field name="end_date" required="1"/>
+                            <button string="Update" name="%(action_horse_assign_update_wizard)d" type="action"/>
+                            <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
+                        </tree>
+                    </field>
                 </page>
                 <!--
                 if the above works remove me also remove when i am able to add travel to the booking
