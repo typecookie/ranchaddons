@@ -19,36 +19,35 @@
                         </td>
                         <t t-foreach="detail.value" t-as="status">
                             <t t-if="status.state == 'Free'">
-                                <td
-                                    class="table_free"
-                                    t-att-data="status.room_id"
-                                    t-att-date="status.date"
-                                    style="text-align:center;"
-                                >
-                                    <t t-esc="status.state" />
-                                </td>
+                                <t t-if="status.is_draft == 'Yes'">
+                                    <td
+                                        class="table_reserved1"
+                                        t-att-date="status.date"
+                                        style="text-align:center;">
+                                        <t t-esc="status.state" />
+                                    </td>
+                                </t>
+                                <t t-else="">
+                                    <td
+                                        class="table_free"
+                                        t-att-data="status.room_id"
+                                        t-att-date="status.date"
+                                        style="text-align:center;">
+                                        <t t-esc="status.state" />
+                                    </td>
+                                </t>
                             </t>
-                            <t
-                                t-if="status.state != 'Free' and status.is_draft == 'No'"
-                            >
-                                <td
-                                    class="table_reserved"
-                                    t-att-data-model="status.data_model"
-                                    t-att-data-id="status.data_id"
-                                    style="text-align:center;"
-                                >
-                                    <t t-esc="status.state" />
-                                </td>
-                            </t>
-                            <t t-if="status.is_draft == 'Yes'">
-                                <td
-                                    class="table_reserved1"
-                                    t-att-data-model="status.data_model"
-                                    t-att-data-id="status.data_id"
-                                    style="text-align:center;"
-                                >
-                                    <t t-esc="status.state" />
-                                </td>
+                            <t t-if="status.state != 'Free'">
+                                <t t-if="status.is_draft == 'No'">
+                                    <td
+                                        class="table_reserved"
+                                        t-att-data-model="status.data_model"
+                                        t-att-data-id="status.data_id"
+                                        t-att-date="status.date"
+                                        style="text-align:center;">
+                                        <t t-esc="status.state" />
+                                    </td>
+                                </t>
                             </t>
                         </t>
                     </tr>

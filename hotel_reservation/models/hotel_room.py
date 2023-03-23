@@ -125,8 +125,8 @@ class RoomReservationSummary(models.Model):
         res = {}
         all_detail = []
         room_obj = self.env["hotel.room"]
+        reserv_line_obj = self.env["hotel.reservation.line"]
         reservation_line_obj = self.env["hotel.room.reservation.line"]
-        draft_line_obj = self.env["hotel.reservation.line"]
         folio_room_line_obj = self.env["folio.room.line"]
         user_obj = self.env["res.users"]
         date_range_list = []
@@ -169,13 +169,32 @@ class RoomReservationSummary(models.Model):
                 room_detail.update({"name": room.name or ""})
                 if not room.room_reservation_line_ids and not room.room_line_ids:
                     for chk_date in date_range_list:
-                        room_list_stats.append(
-                            {
-                                "state": "Free",
-                                "date": chk_date,
-                                "room_id": room.id,
-                            }
+                        ch_dt = chk_date[:10] + " 23:59:59"
+                        ttime = datetime.strptime(ch_dt, dt)
+                        c = ttime.replace(tzinfo=timezone).astimezone(
+                            pytz.timezone("UTC")
                         )
+                        chkdate = c.strftime(dt)
+                        reserv_line_ids = reserv_line_obj.search([]).filtered(
+                            lambda l: str(l.line_id.checkin) <= chkdate <= str(l.line_id.checkout) and room.id in l.reserve.ids and l.line_id.state == 'draft'
+                        )
+                        if reserv_line_ids:
+                            room_list_stats.append(
+                                {
+                                    "state": "Free",
+                                    "date": chk_date,
+                                    "room_id": room.id,
+                                    "is_draft": "Yes",
+                                }
+                            )
+                        else:
+                            room_list_stats.append(
+                                {
+                                    "state": "Free",
+                                    "date": chk_date,
+                                    "room_id": room.id,
+                                }
+                            )
                 else:
                     for chk_date in date_range_list:
                         ch_dt = chk_date[:10] + " 23:59:59"
@@ -193,7 +212,10 @@ class RoomReservationSummary(models.Model):
                                 ("state", "=", "assigned"),
                             ]
                         )
-                        if not reservline_ids:
+                        reserv_line_ids = reserv_line_obj.search([]).filtered(
+                            lambda l: str(l.line_id.checkin) <= chk_date <= str(l.line_id.checkout) and room.id in l.reserve.ids and l.line_id.state == 'draft'
+                        )
+                        if not reservline_ids and not reserv_line_ids:
                             sdt = dt
                             chk_date = datetime.strptime(chk_date, sdt)
                             chk_date = datetime.strftime(
@@ -255,7 +277,6 @@ class RoomReservationSummary(models.Model):
                                         reservline_ids = False
                         fol_room_line_ids = room.room_line_ids.ids
                         chk_state = ["draft", "cancel"]
-                        chk_state2= "draft"
                         folio_resrv_ids = folio_room_line_obj.search(
                             [
                                 ("id", "in", fol_room_line_ids),
@@ -264,26 +285,7 @@ class RoomReservationSummary(models.Model):
                                 ("status", "not in", chk_state),
                             ]
                         )
-                        # draft_resrv_ids = draft_line_obj.search(
-                        #     [
-                        #         ("check_in", "<=", chk_date),
-                        #         ("check_out", ">=", chk_date),
-                        #         ("status", "in", chk_state2),
-                        #     ]
-                        # )
-                        # print(draft_line_obj)
-                        # if draft_resrv_ids:
-                        #     room_list_stats.append(
-                        #         {
-                        #             "state": "Reserved",
-                        #             "date": chk_date,
-                        #             "room_id": room.id,
-                        #             "is_draft": "Yes",
-                        #             "data_model": "",
-                        #             "data_id": 0,
-                        #         }
-                        #     )
-                        if reservline_ids:
+                        if reservline_ids or folio_resrv_ids:
                             room_list_stats.append(
                                 {
                                     "state": "Reserved",
@@ -295,13 +297,23 @@ class RoomReservationSummary(models.Model):
                                 }
                             )
                         else:
-                            room_list_stats.append(
-                                {
-                                    "state": "Free",
-                                    "date": chk_date,
-                                    "room_id": room.id,
-                                }
-                            )
+                            if reserv_line_ids:
+                                room_list_stats.append(
+                                    {
+                                        "state": "Free",
+                                        "date": chk_date,
+                                        "room_id": room.id,
+                                        "is_draft": "Yes",
+                                    }
+                                )
+                            else:
+                                room_list_stats.append(
+                                    {
+                                        "state": "Free",
+                                        "date": chk_date,
+                                        "room_id": room.id,
+                                    }
+                                )
 
                 room_detail.update({"value": room_list_stats})
                 all_room_detail.append(room_detail)

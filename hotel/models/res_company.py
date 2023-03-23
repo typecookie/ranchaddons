@@ -14,3 +14,6 @@ class ResCompany(models.Model):
                                       hours will be provided here based on \
                                       that extra days will be calculated.",
     )
+
+    checkin_time = fields.Char('Checkin Time')
+    checkout_time = fields.Char('Checkout Time')

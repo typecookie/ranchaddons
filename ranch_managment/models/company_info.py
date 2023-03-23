@@ -6,5 +6,3 @@ class ResCompany(models.Model):
 
     first_guest_week = fields.Date()
     last_guet_week = fields.Date()
-    checkin_time = fields.Text()
-    checkout_time = fields.Text()

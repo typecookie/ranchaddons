@@ -8,6 +8,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='currency_id']" position="after">
                 <field name="additional_hours" />
+                <field name="checkin_time" placeholder="00:00" />
+                <field name="checkout_time" placeholder="00:00" />
             </xpath>
         </field>
     </record>
