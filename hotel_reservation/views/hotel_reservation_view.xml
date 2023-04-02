@@ -128,11 +128,13 @@
                             <field name='folio_id' readonly='1' />
                         </page>
                         <page string="Travel" >
-                            <field name="is_driving"/>
-                            <field name="flight_number"/>
-                            <field name="airport"/>
-                            <field name="arrival_time"/>
-                            <field name="departure_time"/>
+                            <group>
+                                <field name="is_driving" string="Driving?"/>
+                                <field name="flight_number" string="Flight Number"/>
+                                <field name="airport" string="Airport"/>
+                                <field name="arrival_time" string="Arrival Time"/>
+                                <field name="departure_time" string="departure_time"/>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>
