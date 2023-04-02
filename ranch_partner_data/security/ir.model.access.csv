@@ -2,3 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_horse_assign_data,access_horse_assign_data,model_horse_assign_data,base.group_user,1,1,1,1
 access_horse_assign_wizard,access_horse_assign_wizard,model_horse_assign_wizard,base.group_user,1,1,1,1
 access_horse_assign_update_wizard,access_horse_assign_update_wizard,model_horse_assign_update_wizard,base.group_user,1,1,1,1
+access_saddle_assign_data,access_saddle_assign_data,model_saddle_assign_data,base.group_user,1,1,1,1
+access_saddle_assign_wizard,access_saddle_assign_wizard,model_saddle_assign_wizard,base.group_user,1,1,1,1
+access_saddle_assign_update_wizard,access_saddle_assign_update_wizard,model_saddle_assign_update_wizard,base.group_user,1,1,1,1

@@ -8,7 +8,8 @@
 
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button string="Assign Horse" name="%(action_horse_assign_wizard)d" type="action"/>
+                    <button string="Assign Horse" name="%(action_horse_assign_wizard)d" type="action"  attrs="{'invisible': [('is_company', '=', True)]}" />
+                    <button string="Assign Saddle" name="%(action_saddle_assign_wizard)d" type="action"  attrs="{'invisible': [('is_company', '=', True)]}" />
                 </header>
             </xpath>
 
@@ -54,9 +55,6 @@
 
                 </page>
                 <page string="Reservations">
-                    <!--
-                    Attempt to get the bookings added here
-                    !-->
                     <field name="reservation_ids" readonly="1">
                         <tree>
                             <field name="reservation_no" />
@@ -65,13 +63,16 @@
                             <field name="checkin" />
                             <field name="checkout" />
                             <field name="state" />
+                            <!-- move following 5 lines to external -->
+                            <field name="is_driving" string="Driving?"/>
+                            <field name="flight_number" string="flight_number"/>
+                            <field name="airport" string="airport"/>
+                            <field name="arrival_time" string="arrival_time"/>
+                            <field name="departure_time" string="departure_time"/>
                         </tree>
                     </field>
                 </page>
-                <page string="Horses Assign">
-                    <!--
-                    Attempt to get the bookings added here
-                    !-->
+                <page string="Horses Assign" attrs="{'invisible': [('is_company', '=', True)]}">
                     <field name="horse_assign_ids" readonly="1">
                         <tree>
                             <field name="partner_id" invisible="1"/>
@@ -85,7 +86,7 @@
                 </page>
                 <!--
                 if the above works remove me also remove when i am able to add travel to the booking
-                !-->
+
                 <page string="Travel" attrs="{'invisible': [('is_company', '=', False)]}">
                     <group>
                         <field name="is_driving"/>
@@ -94,7 +95,7 @@
                         <field name="arrival_time"/>
                         <field name="departure_time"/>
                     </group>
-                </page>
+                </page>!-->
             </xpath>
         </field>
     </record>

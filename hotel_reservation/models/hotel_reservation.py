@@ -128,6 +128,12 @@ class HotelReservation(models.Model):
         string="Folio",
     )
     no_of_folio = fields.Integer("No. Folio", compute="_compute_folio_count")
+# move following 5 to external
+    is_driving = fields.Boolean(string="Driving?")
+    flight_number = fields.Char()
+    airport = fields.Char()
+    arrival_time = fields.Datetime()
+    departure_time = fields.Datetime()
 
     def unlink(self):
         """

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="saddle_assign_wizard_view" model="ir.ui.view">
+            <field name="name">saddle.assign.wizard.view</field>
+            <field name="model">saddle.assign.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                            <field name="saddle_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="end_date" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="assign" string="Assign" type="object" class="oe_highlight" />
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_saddle_assign_wizard" model="ir.actions.act_window">
+            <field name="name">Assign Saddle</field>
+            <field name="res_model">saddle.assign.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

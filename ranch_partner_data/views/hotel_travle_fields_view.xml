@@ -1,0 +1,21 @@
+<!--<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ranch_addons_for_hotel" model="ir.ui.view">
+        <field name="name">ranch.addons.for.partner</field>
+        <field name="inherit_id" ref="base.view_hotel_reservation_form" />
+        <field name="model">hotel.reservation</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Travel" >
+                    <group>
+                        <field name="is_driving"/>
+                        <field name="flight_number"/>
+                        <field name="airport"/>
+                        <field name="arrival_time"/>
+                        <field name="departure_time"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
