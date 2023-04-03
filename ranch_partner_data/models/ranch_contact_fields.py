@@ -20,6 +20,7 @@ class ResPartner(models.Model):
     horse_request = fields.Char()
     horse_assigned = fields.Many2one('horse.data', string='Horse')
     cabin_owner = fields.Boolean()
+    Family = fields.Boolean(default=True)
     cabin_preference = fields.Char()
     deposit_request_sent = fields.Boolean()
     deposit_request_received = fields.Boolean()

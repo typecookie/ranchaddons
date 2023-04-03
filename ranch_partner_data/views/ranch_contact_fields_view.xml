@@ -14,6 +14,7 @@
             </xpath>
 
             <xpath expr="//field[@name='vat']" position="after">
+                <field name="Family" attrs="{'invisible': [('is_company', '=', False)]}"/>
                 <field name="Sex" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="Height" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="Weight" attrs="{'invisible': [('is_company', '=', True)]}" />
@@ -54,7 +55,7 @@
                     </group>
 
                 </page>
-                <page string="Reservations">
+                <page string="Reservations"  attrs="{'invisible': [('is_company', '=', False)]}">
                     <field name="reservation_ids" readonly="1">
                         <tree>
                             <field name="reservation_no" />
