@@ -63,7 +63,6 @@
                             <field name="checkin" />
                             <field name="checkout" />
                             <field name="state" />
-                            <!-- move following 5 lines to external -->
                             <field name="is_driving" string="Driving?"/>
                             <field name="flight_number" string="flight_number"/>
                             <field name="airport" string="airport"/>
@@ -84,18 +83,6 @@
                         </tree>
                     </field>
                 </page>
-                <!--
-                if the above works remove me also remove when I am able to add travel to the booking
-
-                <page string="Travel" attrs="{'invisible': [('is_company', '=', False)]}">
-                    <group>
-                        <field name="is_driving"/>
-                        <field name="flight_number"/>
-                        <field name="airport"/>
-                        <field name="arrival_time"/>
-                        <field name="departure_time"/>
-                    </group>
-                </page>!-->
             </xpath>
         </field>
     </record>
