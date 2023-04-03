@@ -85,7 +85,7 @@
                     </field>
                 </page>
                 <!--
-                if the above works remove me also remove when i am able to add travel to the booking
+                if the above works remove me also remove when I am able to add travel to the booking
 
                 <page string="Travel" attrs="{'invisible': [('is_company', '=', False)]}">
                     <group>
