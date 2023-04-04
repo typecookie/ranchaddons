@@ -24,9 +24,9 @@
                          <td>
                              <group>
                                  <field name="rack_number"/>
-                                 <field name="seat_size" />
-                                 <field name="stirrup_max" />
-                                 <field name="stirrup_min" />
+                                 <field name="seat_size" digits="[12,1]"/>
+                                 <field name="stirrup_max" digits="[12,2]" />
+                                 <field name="stirrup_min" digits="[12,2]" />
                              </group>
                          </td>
                          <td>
