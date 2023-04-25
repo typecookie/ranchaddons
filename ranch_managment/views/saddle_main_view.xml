@@ -34,6 +34,7 @@
                                  <field name="purchase_date"/>
                                  <field name="saddle_serial"/>
                                  <field name="in_use"/>
+                                 <field name="tag_ids" widget="many2many_tags"/>
                              </group>
                          </td>
                       </tr>
