@@ -2,32 +2,61 @@
     <template id="guestlist_display_report_document">
         <t t-call="web.basic_layout">
             <div class="container">
-                <table class="table">
-                    <t t-foreach="docs" t-as="doc"><!-- for Loop -->
-                        <tr>
-                            <td>
-                                <span t-esc="doc['name']"/><br/>
-                                <t t-foreach="doc['member_list']" t-as="member">
+                <div class="row">
+                    <t t-foreach="docs" t-as="doc">
+                        <span class="col-6" style="margin-bottom: 20px;">
 
-                                    <span t-esc="member['name']" />
-                                    <t t-if="member['age'] &lt; 21">
-                                        <span t-esc="member['age']"  attrs="{'invisible': [(member['age']', '>=', 21)]}"/>
-                                    </t>
-                                    <br/>
-                        </t>
-                            </td>
-                            <td>
-                                <span t-esc="doc['rooms']"/><br/>
-                                Years:
-                                <t t-foreach="range(doc['number_of_years_return'])" t-as="star">
-                                    <t t-set="color" t-value="doc['partner'].get_random_color()"/>
-                                    <span class="fa fa-star" t-att-style="'color: %s;' % color"/><br/>
+                            <span t-esc="doc['name']"/><br/>
+                            <t t-foreach="doc['member_list']" t-as="member">
+                                <span t-esc="member['name']" />
+                                <t t-if="member['age'] &lt; 21">
+                                    <span t-esc="member['age']"/>
                                 </t>
-                                <span t-esc="doc['city']"/>  <span class="o_address_state" t-esc="doc['state']"/>
-                            </td>
-                        </tr>
+                                <br/>
+                            </t>
+
+                            <span t-esc="doc['rooms']"/><br/>
+                            Years:
+                            <t t-foreach="range(doc['number_of_years_return'])" t-as="star">
+                                <t t-set="color" t-value="doc['partner'].get_random_color()"/>
+                                <span class="fa fa-star" t-att-style="'color: %s;' % color"/>
+                            </t>
+                            <br/>
+                            <span t-esc="doc['city']"/>  <span t-esc="doc['state']"/>
+                        </span>
+
                     </t>
-                </table>
+
+
+
+                </div>
+
+                <!--                <table class="table">-->
+                <!--                    <t t-foreach="docs" t-as="doc">&lt;!&ndash; for Loop &ndash;&gt;-->
+                <!--                        <tr>-->
+                <!--                            <td>-->
+                <!--                                <span t-esc="doc['name']"/><br/>-->
+                <!--                                <t t-foreach="doc['member_list']" t-as="member">-->
+
+                <!--                                    <span t-esc="member['name']" />-->
+                <!--                                    <t t-if="member['age'] &lt; 21">-->
+                <!--                                        <span t-esc="member['age']"  attrs="{'invisible': [(member['age']', '>=', 21)]}"/>-->
+                <!--                                    </t>-->
+                <!--                                    <br/>-->
+                <!--                                </t>-->
+                <!--                            </td>-->
+                <!--                            <td>-->
+                <!--                                <span t-esc="doc['rooms']"/><br/>-->
+                <!--                                Years:-->
+                <!--                                <t t-foreach="range(doc['number_of_years_return'])" t-as="star">-->
+                <!--                                    <t t-set="color" t-value="doc['partner'].get_random_color()"/>-->
+                <!--                                    <span class="fa fa-star" t-att-style="'color: %s;' % color"/>-->
+                <!--                                </t>-->
+                <!--                                <span t-esc="doc['city']"/>  <span class="o_address_state" t-esc="doc['state']"/>-->
+                <!--                            </td>-->
+                <!--                        </tr>-->
+                <!--                    </t>-->
+                <!--                </table>-->
             </div>
         </t>
     </template>

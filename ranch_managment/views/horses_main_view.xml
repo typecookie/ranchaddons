@@ -23,6 +23,7 @@
                             <field name="intermediate" attrs="{'invisible': [('guest_use', '!=', True)]}" />
                             <field name="beginner" attrs="{'invisible': [('guest_use', '!=', True)]}"/>
                             <field name="bridle_data"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
                         </group>
                         <group>
                             <field name="horse_birth_date"/>

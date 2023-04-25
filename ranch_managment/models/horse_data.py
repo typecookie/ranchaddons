@@ -20,6 +20,7 @@ class HorseData(models.Model):
     guest_use = fields.Boolean()
     wrangler_use = fields.Boolean()
     bridle_data = fields.Char()
+    tag_ids = fields.Many2many('horse.data.tag', string='Tags')
 
     @api.depends("horse_birth_date")
     def _compute_age(self):
@@ -28,3 +29,10 @@ class HorseData(models.Model):
             if record.horse_birth_date:
                 age = relativedelta(fields.Date.today(), record.horse_birth_date).years
             record.age = age
+
+
+class HorseDataTag(models.Model):
+    _name = 'horse.data.tag'
+    _description = "Horse Database Tag"
+
+    name = fields.Char('Name', required=True, tracking=True)
