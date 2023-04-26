@@ -40,6 +40,7 @@ class ReportGuestListReport(models.AbstractModel):
             for member in reservation.partner_id.child_ids:
                 ## odoo takes care of joins/ foren keys
                 member_list.append({
+                    'id': member.id,
                     'name': member.name,
                     'height': member.Height,
                     'weight': member.Weight,
@@ -52,7 +53,7 @@ class ReportGuestListReport(models.AbstractModel):
                     'health_conditions': member.health_conditions,
                     'health_requests': member.health_requests,
                     'horse_request': member.horse_request,
-                    'horse_assigned': member.horse_assigned,
+                    'horse_assigned': member.horse_assigned.name,
                     'saddle_request': member.saddle_request,
                     'saddle_assigned': member.saddle_assigned,
                 })

@@ -5,7 +5,7 @@
     'category': 'Tools',
 ===================================================
 """,
-    'depends': ["contacts", "hotel"],
+    'depends': ["contacts", "hotel", "ranch_partner_data"],
     'data': [
         'security/ir.model.access.csv',
         'wizard/guestlist_report_wizard_view.xml',

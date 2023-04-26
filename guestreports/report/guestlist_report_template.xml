@@ -16,7 +16,7 @@
                         <t t-foreach="doc['member_list']" t-as="member">
                             <tr>
                                 <td>
-                                    <span t-esc="member['name']"/><br/>
+                                    <a t-attf-href="/web#id={{ member['id'] }}&amp;view_type=form&amp;model=res.partner" target="_blank"><span t-esc="member['name']"/></a><br/>
                                     Height: <span t-esc="member['height']"/><br/>
                                     Weight: <span t-esc="member['weight']"/><br/>
                                     Age: <span t-esc="member['age']"/><br/>
