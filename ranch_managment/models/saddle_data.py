@@ -18,6 +18,6 @@ class SaddleData(models.Model):
 
 class SaddleDataTag(models.Model):
     _name = 'saddle.data.tag'
-    _description = "saddle Database Tag"
+    _description = "Saddle Database Tag"
 
     name = fields.Char('Name', required=True, tracking=True)
