@@ -35,6 +35,18 @@
                         </group>
                     </group>
                 </sheet>
+                <notebook>
+                    <page string="Vet" name="Vet">
+                        <field name="name" invisible="1"/>
+                        <field name="Diagnosis" required="1"/>
+                        <field name="Treatment" required="1"/>
+                        <field name="Notes" required="1"/>
+                        <field name="Vet_Begin_date"/>
+                        <field name="Vet_End_date"/>
+                        <button string="Update" name="%(action_vet_update_wizard)d" type="action"/>
+                        <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
+                    </page>
+                </notebook>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
                     <field name="message_ids"/>
