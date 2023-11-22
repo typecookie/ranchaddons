@@ -35,7 +35,7 @@
                         </group>
                     </group>
                 </sheet>
-                <notebook>
+ <!--               <notebook>
                     <page string="Vet" name="Vet">
                         <field name="name" invisible="1"/>
                         <field name="Diagnosis" required="1"/>
@@ -50,7 +50,7 @@
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
                     <field name="message_ids"/>
-                </div>
+                </div>-->
 
 <!--                <table>-->
 <!--                    <tr>-->
