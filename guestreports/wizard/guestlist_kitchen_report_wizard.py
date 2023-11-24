@@ -4,7 +4,7 @@ import random
 
 
 class GuestListKitchenReportWizard(models.TransientModel):
-    _name = "guestlist.kitchen.report.wizard"
+    _name = "guestlist.kitchen.report.wizards"
 
     start_date = fields.Datetime('Start Date')
     end_date = fields.Datetime('End Date')

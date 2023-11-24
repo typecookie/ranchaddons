@@ -21,6 +21,7 @@ class HorseData(models.Model):
     wrangler_use = fields.Boolean()
     bridle_data = fields.Char()
     tag_ids = fields.Many2many('horse.data.tag', string='Tags')
+    vet_data_ids = fields.One2many('vet.data', 'name', string='vet_name')
 
     @api.depends("horse_birth_date")
     def _compute_age(self):

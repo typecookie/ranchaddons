@@ -9,6 +9,9 @@
         <field name="name">Horse Data Form</field>
         <field name="model">horse.data</field>
         <field name="arch" type="xml">
+            <header>
+                <button string="Create Vet Entry" name="%(action_vet_wizard)d" type="action"/>
+        </header>
             <form>
                 <sheet>
                     <group>
@@ -35,6 +38,20 @@
                         </group>
                     </group>
                 </sheet>
+                 <notebook>
+                    <page string="Vet" name="Vet">
+                        <field name="vet_data_ids" readonly='1'>
+                            <tree>
+                                <field name="Diagnosis" required="1"/>
+                                <field name="Treatment" required="1"/>
+                                <field name="Notes" required="1"/>
+                                <field name="Vet_Begin_date"/>
+                                <field name="Vet_End_date"/>
+                                <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
                     <field name="message_ids"/>

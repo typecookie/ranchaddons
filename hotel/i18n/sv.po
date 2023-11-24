@@ -3733,8 +3733,8 @@ msgstr ""
 #~ msgid "Compute"
 #~ msgstr "Beräkna"
 
-#~ msgid "folio.report.wizard"
-#~ msgstr "folio.report.wizard"
+#~ msgid "folio.report.wizards"
+#~ msgstr "folio.report.wizards"
 
 #~ msgid "Beds"
 #~ msgstr "Sängar"

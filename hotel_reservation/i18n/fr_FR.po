@@ -1250,8 +1250,8 @@ msgstr "to"
 #~ msgid "Resevr# No"
 #~ msgstr "Résevation No"
 
-#~ msgid "wizard.make.folio"
-#~ msgstr "wizard.make.folio"
+#~ msgid "wizards.make.folio"
+#~ msgstr "wizards.make.folio"
 
 #~ msgid "Shop"
 #~ msgstr "Boutique"
@@ -1283,7 +1283,7 @@ msgstr "to"
 #~ msgstr "Chambre No"
 
 #, fuzzy
-#~ msgid "hotel.reservation.wizard"
+#~ msgid "hotel.reservation.wizards"
 #~ msgstr "Réservation"
 
 #, fuzzy

@@ -4,7 +4,7 @@ from odoo import fields, models
 
 
 class HotelReservationWizard(models.TransientModel):
-    _name = "hotel.reservation.wizard"
+    _name = "hotel.reservation.wizards"
     _description = "Allow to generate a reservation"
 
     date_start = fields.Datetime("Start Date", required=True)
@@ -52,7 +52,7 @@ class HotelReservationWizard(models.TransientModel):
 
 
 class MakeFolioWizard(models.TransientModel):
-    _name = "wizard.make.folio"
+    _name = "wizards.make.folio"
     _description = "Allow to generate the folio"
 
     grouped = fields.Boolean("Group the Folios")

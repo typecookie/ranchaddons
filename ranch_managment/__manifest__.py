@@ -14,6 +14,7 @@
         'views/saddle_main_view.xml',
         'views/menus.xml',
         'views/company_ranch_date_view.xml',
+        'wizards/vet_wizard_views.xml',
 
     ],
     'installable': True,

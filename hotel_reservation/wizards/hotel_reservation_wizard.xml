@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!--Form view for hotel reservation wizard -->
+    <!--Form view for hotel reservation wizards -->
     <record id="hotel_reservation_wizard_form_view" model="ir.ui.view">
         <field name="name">hotel.reservation.wizard.form</field>
         <field name="model">hotel.reservation.wizard</field>
@@ -49,7 +49,7 @@
             </form>
         </field>
     </record>
-    <!--Action for hotel reservation wizard -->
+    <!--Action for hotel reservation wizards -->
     <record id="action_hotel_reservation_wizard" model="ir.actions.act_window">
         <field name="name">Hotel Reservation Report</field>
         <field name="res_model">hotel.reservation.wizard</field>
@@ -57,7 +57,7 @@
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
-    <!--Form view for wizard make folio -->
+    <!--Form view for wizards make folio -->
     <record id="make_folio_wizard_form_view" model="ir.ui.view">
         <field name="name">make.folio.wizard.form</field>
         <field name="model">wizard.make.folio</field>
@@ -88,7 +88,7 @@
         </field>
     </record>
 
-    <!--Action for hotel reservation wizard -->
+    <!--Action for hotel reservation wizards -->
     <record id="act_make_folio" model="ir.actions.act_window">
         <field name="name">Make Folios</field>
         <field name="res_model">wizard.make.folio</field>

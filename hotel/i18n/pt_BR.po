@@ -4107,8 +4107,8 @@ msgstr "tipo: [(nome, quantidade, base, quantidade formatada, base formatada)]"
 #~ msgid "service_line_id"
 #~ msgstr "Id_servicio"
 
-#~ msgid "folio.report.wizard"
-#~ msgstr "folio.report.wizard"
+#~ msgid "folio.report.wizards"
+#~ msgstr "folio.report.wizards"
 
 #~ msgid "Beds"
 #~ msgstr "Beds"

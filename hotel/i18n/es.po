@@ -3815,8 +3815,8 @@ msgstr ""
 #~ msgid "service_line_id"
 #~ msgstr "Id_linea_servicios"
 
-#~ msgid "folio.report.wizard"
-#~ msgstr "folio.report.wizard"
+#~ msgid "folio.report.wizards"
+#~ msgstr "folio.report.wizards"
 
 #~ msgid "Beds"
 #~ msgstr "Camas"

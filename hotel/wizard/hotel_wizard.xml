@@ -1,5 +1,5 @@
 <odoo>
-    <!--Form view for folio report wizard -->
+    <!--Form view for folio report wizards -->
     <record id="view_hotel_folio_wizard" model="ir.ui.view">
         <field name="name">folio.report.wizard</field>
         <field name="model">folio.report.wizard</field>
@@ -27,7 +27,7 @@
             </form>
         </field>
     </record>
-    <!--Action for folio report wizard -->
+    <!--Action for folio report wizards -->
     <record id="hotel_folio_wizard" model="ir.actions.act_window">
         <field name="name">Hotel Folio Report</field>
         <field name="res_model">folio.report.wizard</field>

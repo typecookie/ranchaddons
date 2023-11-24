@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="vet_wizard_view" model="ir.ui.view">
+            <field name="name">vet.wizard.view</field>
+            <field name="model">vet.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="horse_id" required="1"/>
+                            <field name="Vet_Begin_date" required="1"/>
+                            <field name="Vet_End_date"/>
+                        </group>
+                        <group>
+                            <field name="Diagnosis" required="1"/>
+                            <field name="Treatment" required="1"/>
+                            <field name="Notes"/>
+                        </group>
+                    </group>
+                        <button name="assign" string="Assign" type="object" class="oe_highlight" />
+                        <button special="cancel" string="Cancel" />
+                </form>
+            </field>
+        </record>
+        <record id="action_vet_wizard" model="ir.actions.act_window">
+            <field name="name">Horse</field>
+            <field name="res_model">vet.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

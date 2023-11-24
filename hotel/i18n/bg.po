@@ -3737,8 +3737,8 @@ msgstr ""
 #~ msgid "unknown"
 #~ msgstr "неизвестен"
 
-#~ msgid "folio.report.wizard"
-#~ msgstr "folio.report.wizard"
+#~ msgid "folio.report.wizards"
+#~ msgstr "folio.report.wizards"
 
 #~ msgid "Available Rooms"
 #~ msgstr "Available Rooms"

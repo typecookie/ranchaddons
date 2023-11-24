@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 
 class GuestListDisplayReportWizard(models.TransientModel):
-    _name = "guestlist.display.report.wizard"
+    _name = "guestlist.display.report.wizards"
 
     start_date = fields.Datetime('Start Date')
     end_date = fields.Datetime('End Date')

@@ -4,7 +4,7 @@ from odoo import fields, models
 
 
 class FolioReportWizard(models.TransientModel):
-    _name = "folio.report.wizard"
+    _name = "folio.report.wizards"
     _rec_name = "date_start"
     _description = "Allow print folio report by date"
 

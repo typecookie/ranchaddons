@@ -4,7 +4,7 @@ import random
 
 
 class GuestListBarnReportWizard(models.TransientModel):
-    _name = "guestlist.barn.report.wizard"
+    _name = "guestlist.barn.report.wizards"
 
     start_date = fields.Datetime('Start Date')
     end_date = fields.Datetime('End Date')

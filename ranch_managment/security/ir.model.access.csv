@@ -4,3 +4,6 @@ access_menus,access_menus,model_horse_data,base.group_user,1,1,1,1
 access_saddle_main_view,access_saddle_main_view,model_saddle_data,base.group_user,1,1,1,1
 access_horses_tag_view,access_horses_tag_view,model_horse_data_tag,base.group_user,1,1,1,1
 access_saddle_tag_view,access_saddle_tag_view,model_saddle_data_tag,base.group_user,1,1,1,1
+access_vet_data_view,access_vet_data_view,model_vet_data,base.group_user,1,1,1,1
+access_vet_wizard_view,access_vet_wizard_view,model_vet_wizard,base.group_user,1,1,1,1
+,,
