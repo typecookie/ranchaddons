@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="horse_vitals_view" model="ir.ui.view">
+            <field name="name">horse.vitals.view</field>
+            <field name="model">horse.vitals.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="horse_id" required="1"/>
+                            <field name="Temp"/>
+                            <field name="BPM" required="1"/>
+                            <field name="Notes"/>
+                        </group>
+                    </group>
+                        <button name="assign" string="Assign" type="object" class="oe_highlight" />
+                        <button special="cancel" string="Cancel" />
+                </form>
+            </field>
+        </record>
+        <record id="action_horse_vitals_wizard" model="ir.actions.act_window">
+            <field name="name">Horse</field>
+            <field name="res_model">horse.vitals.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

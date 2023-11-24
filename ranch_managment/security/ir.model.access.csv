@@ -6,4 +6,5 @@ access_horses_tag_view,access_horses_tag_view,model_horse_data_tag,base.group_us
 access_saddle_tag_view,access_saddle_tag_view,model_saddle_data_tag,base.group_user,1,1,1,1
 access_vet_data_view,access_vet_data_view,model_vet_data,base.group_user,1,1,1,1
 access_vet_wizard_view,access_vet_wizard_view,model_vet_wizard,base.group_user,1,1,1,1
-,,
+access_horse_vitals,access_horse_vitals,model_horse_vitals,base.group_user,1,1,1,1
+access_horse_vitals_wizard,access_horse_vitals_wizard,model_horse_vitals_wizard,base.group_user,1,1,1,1

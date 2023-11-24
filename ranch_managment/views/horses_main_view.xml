@@ -10,6 +10,7 @@
         <field name="model">horse.data</field>
         <field name="arch" type="xml">
             <header>
+                <button string="Create Vitals Entry" name="%(action_horse_vitals_wizard)d" type="action"/>
                 <button string="Create Vet Entry" name="%(action_vet_wizard)d" type="action"/>
         </header>
             <form>
@@ -39,23 +40,32 @@
                     </group>
                 </sheet>
                  <notebook>
-                    <page string="Vet" name="Vet">
-                        <field name="vet_data_ids" readonly='1'>
-                            <tree>
-                                <field name="Diagnosis" required="1"/>
-                                <field name="Treatment" required="1"/>
-                                <field name="Notes" required="1"/>
-                                <field name="Vet_Begin_date"/>
-                                <field name="Vet_End_date"/>
-                                <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
-                            </tree>
-                        </field>
-                    </page>
-                </notebook>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                     <page string="Vet" name="Vet">
+                         <field name="vet_data_ids" readonly='1'>
+                             <tree>
+                                 <field name="Diagnosis" required="1"/>
+                                 <field name="Treatment" required="1"/>
+                                 <field name="Notes" required="1"/>
+                                 <field name="Vet_Begin_date"/>
+                                 <field name="Vet_End_date"/>
+                                 <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
+                             </tree>
+                         </field>
+                     </page>
+                     <page string="Vitals" name="Vitals">
+                         <field name="horse_vitals_ids" readonly="1">
+                             <tree>
+                                 <field name="Temp" required="1"/>
+                                 <field name="BPM" required="1"/>
+                                 <field name="Notes" required="1"/>
+                             </tree>
+                         </field>
+                     </page>
+                 </notebook>
+                 <div class="oe_chatter">
+                     <field name="message_follower_ids"/>
+                     <field name="message_ids"/>
+                 </div>
 
 <!--                <table>-->
 <!--                    <tr>-->

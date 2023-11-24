@@ -1,6 +1,6 @@
 {
     'name': 'Ranch Management',
-    'version': 'rc-0.3',
+    'version': 'rc-0.4',
     'category': 'Tools',
     'description': """
     "author": "typecookie"
@@ -15,6 +15,7 @@
         'views/menus.xml',
         'views/company_ranch_date_view.xml',
         'wizards/vet_wizard_views.xml',
+        'wizards/horse_vitals_wizard_views.xml'
 
     ],
     'installable': True,
