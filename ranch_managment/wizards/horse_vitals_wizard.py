@@ -19,7 +19,7 @@ class HorseVitalsWizard(models.TransientModel):
 
             self.env['horse.vitals'].create({
                 'name': self.horse_id.id,
-                'Temp': self.temp,
+                'Temp': self.Temp,
                 'BPM': self.BPM,
                 'Notes': self.Notes
 
