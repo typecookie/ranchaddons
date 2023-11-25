@@ -7,12 +7,10 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-                        <group>
-                            <field name="horse_id" required="1"/>
-                            <field name="Temp"/>
-                            <field name="BPM" required="1"/>
-                            <field name="Notes"/>
-                        </group>
+                        <field name="horse_id" required="1"/>
+                        <field name="Temp" required="1"/>
+                        <field name="BPM" required="1"/>
+                        <field name="Notes"/>
                     </group>
                         <button name="assign" string="Assign" type="object" class="oe_highlight" />
                         <button special="cancel" string="Cancel" />
