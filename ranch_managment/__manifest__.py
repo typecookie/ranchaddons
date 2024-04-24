@@ -14,7 +14,7 @@
         'views/company_ranch_date_view.xml',
         'wizards/vet_wizard_views.xml',
         'wizards/horse_vitals_wizard_views.xml',
-        'views/horses_main_view.xml',
+	'views/horses_main_view.xml',
         'views/saddle_main_view.xml',
 
     ],
