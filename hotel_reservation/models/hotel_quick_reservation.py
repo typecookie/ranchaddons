@@ -1,15 +1,8 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import logging
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from datetime import datetime, timedelta
-
-_logger = logging.getLogger(__name__)
-try:
-    import pytz
-except (ImportError, IOError) as err:
-    _logger.debug(err)
 
 
 class QuickRoomReservation(models.TransientModel):
@@ -17,9 +10,9 @@ class QuickRoomReservation(models.TransientModel):
     _description = "Quick Room Reservation"
 
     partner_id = fields.Many2one("res.partner", "Customer", required=True)
-    check_in = fields.Datetime("Check In", required=True)
-    check_out = fields.Datetime("Check Out", required=True)
-    room_id = fields.Many2one("hotel.room", "Room", required=True)
+    check_in = fields.Datetime(required=True)
+    check_out = fields.Datetime(required=True)
+    room_id = fields.Many2one("hotel.room", required=True)
     company_id = fields.Many2one("res.company", "Hotel", required=True)
     pricelist_id = fields.Many2one("product.pricelist", "pricelist")
     partner_invoice_id = fields.Many2one(
@@ -29,7 +22,7 @@ class QuickRoomReservation(models.TransientModel):
     partner_shipping_id = fields.Many2one(
         "res.partner", "Delivery Address", required=True
     )
-    adults = fields.Integer("Adults")
+    adults = fields.Integer()
 
     @api.onchange("check_out", "check_in")
     def _on_change_check_out(self):
@@ -83,33 +76,8 @@ class QuickRoomReservation(models.TransientModel):
         """
         res = super(QuickRoomReservation, self).default_get(fields)
         keys = self._context.keys()
-
         if "date" in keys:
-            # res.update({"check_in": self._context["date"]})
-
-            timezone = pytz.timezone(self._context.get('tz') or 'UTC')
-
-            free_date = datetime.strptime(self._context["date"], '%Y-%m-%d %H:%M:%S')
-            free_date = free_date.replace(tzinfo=pytz.timezone("UTC")).astimezone(timezone)
-
-            # get default checkin time from company
-            if self.env.company.checkin_time:
-                default_checkin = str(free_date.date()) + ' ' + self.env.company.checkin_time + ':00'
-            else:
-                default_checkin = str(free_date.date()) + ' ' + '00:00:00'
-
-            # get default checkout time from company
-            if self.env.company.checkout_time:
-                default_checkout = str(free_date.date() + timedelta(days=1)) + ' ' + self.env.company.checkout_time + ':00'
-            else:
-                default_checkout = str(free_date.date() + timedelta(days=1)) + ' ' + '00:00:00'
-
-            d_checkin_obj = timezone.localize(datetime.strptime(default_checkin, '%Y-%m-%d %H:%M:%S'), is_dst=None).astimezone(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
-            d_checkout_obj = timezone.localize(datetime.strptime(default_checkout, '%Y-%m-%d %H:%M:%S'), is_dst=None).astimezone(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
-
-            res.update({"check_in": d_checkin_obj})
-            res.update({"check_out": d_checkout_obj})
-
+            res.update({"check_in": self._context["date"]})
         if "room_id" in keys:
             roomid = self._context["room_id"]
             res.update({"room_id": int(roomid)})

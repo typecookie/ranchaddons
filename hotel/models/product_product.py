@@ -1,6 +1,5 @@
-# See LICENSE file for full copyright and licensing details.
-
-from datetime import datetime
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models, tools
 
@@ -28,11 +27,11 @@ class ProductProduct(models.Model):
         checkin_date = context.get("checkin_date")
         checkout_date = context.get("checkout_date")
         if isinstance(checkin_date, str):
-            checkin_date = datetime.strptime(
+            checkin_date = fields.datetime.strptime(
                 context.get("checkin_date"), tools.DEFAULT_SERVER_DATETIME_FORMAT
             )
         if isinstance(checkout_date, str):
-            checkout_date = datetime.strptime(
+            checkout_date = fields.datetime.strptime(
                 context.get("checkout_date"), tools.DEFAULT_SERVER_DATETIME_FORMAT
             )
         if checkin_date and checkout_date:

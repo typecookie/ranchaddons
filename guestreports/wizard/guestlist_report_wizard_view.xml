@@ -2,7 +2,7 @@
     <data>
          <record id="guestlist_report_wizard" model="ir.ui.view">
             <field name="name">Guest List Report</field>
-            <field name="model">guestlist.report.wizard</field>
+            <field name="model">guestlist.report.wizards</field>
             <field name="arch" type="xml">
                 <form>
                     <group>
@@ -20,7 +20,7 @@
         <record id="action_guestlist_report_wizard" model="ir.actions.act_window">
             <field name="name">Guest List Report</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">guestlist.report.wizard</field>
+            <field name="res_model">guestlist.report.wizards</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>

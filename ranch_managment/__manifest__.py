@@ -1,22 +1,18 @@
 {
     'name': 'Ranch Management',
-    'version': 'rc-0.4',
+    'version': '16.0.1.0.0',
     'category': 'Tools',
-    'description': """
-    "author": "typecookie"
-    "summary": "ranchAddons"
-===================================================
-""",
+    'license': "AGPL-3",
+    'description': """===================================================""",
+    'author': "typecookie",
     'depends': ['mail'],
     'data': [
         'security/ir.model.access.csv',
-        'views/menus.xml',
-        'views/company_ranch_date_view.xml',
-        'wizards/vet_wizard_views.xml',
         'wizards/horse_vitals_wizard_views.xml',
-	'views/horses_main_view.xml',
+        'wizards/vet_wizard_views.xml',
+        'views/horses_main_view.xml',
         'views/saddle_main_view.xml',
-
+        'views/company_ranch_date_view.xml',
     ],
     'installable': True,
     'auto_install': False,

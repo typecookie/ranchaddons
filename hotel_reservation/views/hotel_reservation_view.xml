@@ -127,15 +127,6 @@
                         <page name="history" string='History'>
                             <field name='folio_id' readonly='1' />
                         </page>
-                        <page string="Travel" >
-                            <group>
-                                <field name="is_driving" string="Driving?"/>
-                                <field name="flight_number" string="Flight Number"/>
-                                <field name="airport" string="Airport"/>
-                                <field name="arrival_time" string="Arrival Time"/>
-                                <field name="departure_time" string="departure_time"/>
-                            </group>
-                        </page>
                     </notebook>
                 </sheet>
             </form>

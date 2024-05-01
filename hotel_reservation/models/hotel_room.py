@@ -1,4 +1,6 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 import logging
 from datetime import datetime, timedelta
 
@@ -82,7 +84,10 @@ class HotelRoom(models.Model):
             room.write(status)
             if reservation_line_ids and room_line_ids:
                 raise ValidationError(
-                    _("Please Check Rooms Status for %s.") % room.name
+                    _(
+                        "Please Check Rooms Status for %(room_name)s.",
+                        room_name=room.name,
+                    )
                 )
         return True
 
@@ -93,13 +98,12 @@ class RoomReservationSummary(models.Model):
     _description = "Room reservation summary"
 
     name = fields.Char("Reservation Summary", default="Reservations Summary")
-    date_from = fields.Datetime("Date From", default=lambda self: fields.Date.today())
+    date_from = fields.Datetime(default=lambda self: fields.Date.today())
     date_to = fields.Datetime(
-        "Date To",
         default=lambda self: fields.Date.today() + relativedelta(days=30),
     )
-    summary_header = fields.Text("Summary Header")
-    room_summary = fields.Text("Room Summary")
+    summary_header = fields.Text()
+    room_summary = fields.Text()
 
     def room_reservation(self):
         """
@@ -125,7 +129,6 @@ class RoomReservationSummary(models.Model):
         res = {}
         all_detail = []
         room_obj = self.env["hotel.room"]
-        reserv_line_obj = self.env["hotel.reservation.line"]
         reservation_line_obj = self.env["hotel.room.reservation.line"]
         folio_room_line_obj = self.env["folio.room.line"]
         user_obj = self.env["res.users"]
@@ -169,32 +172,13 @@ class RoomReservationSummary(models.Model):
                 room_detail.update({"name": room.name or ""})
                 if not room.room_reservation_line_ids and not room.room_line_ids:
                     for chk_date in date_range_list:
-                        ch_dt = chk_date[:10] + " 23:59:59"
-                        ttime = datetime.strptime(ch_dt, dt)
-                        c = ttime.replace(tzinfo=timezone).astimezone(
-                            pytz.timezone("UTC")
+                        room_list_stats.append(
+                            {
+                                "state": "Free",
+                                "date": chk_date,
+                                "room_id": room.id,
+                            }
                         )
-                        chkdate = c.strftime(dt)
-                        reserv_line_ids = reserv_line_obj.search([]).filtered(
-                            lambda l: str(l.line_id.checkin) <= chkdate <= str(l.line_id.checkout) and room.id in l.reserve.ids and l.line_id.state == 'draft'
-                        )
-                        if reserv_line_ids:
-                            room_list_stats.append(
-                                {
-                                    "state": "Free",
-                                    "date": chk_date,
-                                    "room_id": room.id,
-                                    "is_draft": "Yes",
-                                }
-                            )
-                        else:
-                            room_list_stats.append(
-                                {
-                                    "state": "Free",
-                                    "date": chk_date,
-                                    "room_id": room.id,
-                                }
-                            )
                 else:
                     for chk_date in date_range_list:
                         ch_dt = chk_date[:10] + " 23:59:59"
@@ -212,10 +196,7 @@ class RoomReservationSummary(models.Model):
                                 ("state", "=", "assigned"),
                             ]
                         )
-                        reserv_line_ids = reserv_line_obj.search([]).filtered(
-                            lambda l: str(l.line_id.checkin) <= chk_date <= str(l.line_id.checkout) and room.id in l.reserve.ids and l.line_id.state == 'draft'
-                        )
-                        if not reservline_ids and not reserv_line_ids:
+                        if not reservline_ids:
                             sdt = dt
                             chk_date = datetime.strptime(chk_date, sdt)
                             chk_date = datetime.strftime(
@@ -297,23 +278,13 @@ class RoomReservationSummary(models.Model):
                                 }
                             )
                         else:
-                            if reserv_line_ids:
-                                room_list_stats.append(
-                                    {
-                                        "state": "Free",
-                                        "date": chk_date,
-                                        "room_id": room.id,
-                                        "is_draft": "Yes",
-                                    }
-                                )
-                            else:
-                                room_list_stats.append(
-                                    {
-                                        "state": "Free",
-                                        "date": chk_date,
-                                        "room_id": room.id,
-                                    }
-                                )
+                            room_list_stats.append(
+                                {
+                                    "state": "Free",
+                                    "date": chk_date,
+                                    "room_id": room.id,
+                                }
+                            )
 
                 room_detail.update({"value": room_list_stats})
                 all_room_detail.append(room_detail)

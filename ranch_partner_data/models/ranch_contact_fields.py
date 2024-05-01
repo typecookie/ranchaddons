@@ -18,7 +18,7 @@ class ResPartner(models.Model):
     health_requests = fields.Text()
     number_of_years_return = fields.Integer()
     horse_request = fields.Char()
-    horse_assigned = fields.Many2one('horse.data', string='Horse')
+    horse_assigned = fields.Many2one("horse.data", 'Horse')
     cabin_owner = fields.Boolean()
     Family = fields.Boolean(default=True)
     cabin_preference = fields.Char()

@@ -2,6 +2,7 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 from datetime import date, datetime
 
+
 class HorseVitalsWizard(models.TransientModel):
     _name = 'horse.vitals.wizard'
 

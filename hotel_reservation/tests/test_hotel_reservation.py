@@ -1,4 +1,5 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime, timedelta
 
@@ -16,6 +17,7 @@ class TestReservation(common.TransactionCase):
         self.hotel_room_reserv_obj = self.env["hotel.room.reservation.line"]
         self.reserv_summary_obj = self.env["room.reservation.summary"]
         self.quick_room_reserv_obj = self.env["quick.room.reservation"]
+        self.hotel_folio_obj = self.env["hotel.folio"]
         self.reserv_line = self.env.ref("hotel_reservation.hotel_reservation_0")
         self.room_type = self.env.ref("hotel.hotel_room_type_1")
         self.room = self.env.ref("hotel.hotel_room_0")
@@ -24,6 +26,8 @@ class TestReservation(common.TransactionCase):
         self.pricelist = self.env.ref("product.list0")
         self.floor = self.env.ref("hotel.hotel_floor_ground0")
         self.manager = self.env.ref("base.user_root")
+        self.warehouse = self.env.ref("stock.warehouse0")
+        self.price_list = self.env.ref("product.list0")
         cur_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         self.hotel_reserv_line = self.hotel_reserv_line_obj.create(
@@ -99,6 +103,20 @@ class TestReservation(common.TransactionCase):
             }
         )
 
+        self.hotel_folio = self.hotel_folio_obj.create(
+            {
+                "name": "Folio/00003",
+                "date_order": cur_date,
+                "warehouse_id": self.warehouse.id,
+                "invoice_status": "no",
+                "pricelist_id": self.price_list.id,
+                "partner_id": self.partner.id,
+                "partner_invoice_id": self.partner.id,
+                "partner_shipping_id": self.partner.id,
+                "state": "draft",
+            }
+        )
+
     def test_hotel_room_unlink(self):
         self.hotel_room.unlink()
 
@@ -171,6 +189,9 @@ class TestReservation(common.TransactionCase):
     def test_cancel_reservation(self):
         self.hotel_reserv.cancel_reservation()
         self.assertEqual(self.hotel_reserv.state == "cancel", True)
+
+    def test_write(self):
+        self.hotel_folio.write({"reservation_id": self.hotel_reserv.id})
 
     def test_on_change_categ(self):
         self.hotel_reserv_line.on_change_categ()

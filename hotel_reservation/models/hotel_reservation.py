@@ -1,4 +1,5 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import timedelta
 
@@ -20,7 +21,7 @@ class HotelReservation(models.Model):
         for res in self:
             res.update({"no_of_folio": len(res.folio_id.ids)})
 
-    reservation_no = fields.Char("Reservation No", readonly=True, copy=False)
+    reservation_no = fields.Char(readonly=True, copy=False)
     date_order = fields.Datetime(
         "Date Ordered",
         readonly=True,
@@ -90,13 +91,11 @@ class HotelReservation(models.Model):
         states={"draft": [("readonly", False)]},
     )
     adults = fields.Integer(
-        "Adults",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="List of adults there in guest list. ",
     )
     children = fields.Integer(
-        "Children",
         readonly=True,
         states={"draft": [("readonly", False)]},
         help="Number of children there in guest list.",
@@ -104,7 +103,6 @@ class HotelReservation(models.Model):
     reservation_line = fields.One2many(
         "hotel.reservation.line",
         "line_id",
-        string="Reservation Line",
         help="Hotel room reservation details.",
         readonly=True,
         states={"draft": [("readonly", False)]},
@@ -116,7 +114,6 @@ class HotelReservation(models.Model):
             ("cancel", "Cancel"),
             ("done", "Done"),
         ],
-        "State",
         readonly=True,
         default="draft",
     )
@@ -128,12 +125,8 @@ class HotelReservation(models.Model):
         string="Folio",
     )
     no_of_folio = fields.Integer("No. Folio", compute="_compute_folio_count")
-# move following 5 to external
-    is_driving = fields.Boolean(string="Driving?")
-    flight_number = fields.Char()
-    airport = fields.Char()
-    arrival_time = fields.Datetime()
-    departure_time = fields.Datetime()
+
+
 
     def unlink(self):
         """
@@ -153,7 +146,7 @@ class HotelReservation(models.Model):
     def copy(self):
         ctx = dict(self._context) or {}
         ctx.update({"duplicate": True})
-        return super(HotelReservation, self.with_context(ctx)).copy()
+        return super(HotelReservation, self.with_context(**ctx)).copy()
 
     @api.constrains("reservation_line", "adults", "children")
     def _check_reservation_rooms(self):
@@ -510,7 +503,7 @@ class HotelReservationLine(models.Model):
     _name = "hotel.reservation.line"
     _description = "Reservation Line"
 
-    name = fields.Char("Name")
+    name = fields.Char()
     line_id = fields.Many2one("hotel.reservation")
     reserve = fields.Many2many(
         "hotel.room",
@@ -608,7 +601,7 @@ class HotelRoomReservationLine(models.Model):
     _description = "Hotel Room Reservation"
     _rec_name = "room_id"
 
-    room_id = fields.Many2one("hotel.room", string="Room id")
+    room_id = fields.Many2one("hotel.room")
     check_in = fields.Datetime("Check In Date", required=True)
     check_out = fields.Datetime("Check Out Date", required=True)
     state = fields.Selection(

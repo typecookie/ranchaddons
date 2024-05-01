@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-02-14 15:22+0000\n"
+"PO-Revision-Date: 2024-03-29 00:41+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: hotel_reservation
 #: model:mail.template,body_html:hotel_reservation.mail_template_reservation_reminder_24hrs
@@ -22,33 +22,42 @@ msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
 "                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
 "                    <p>\n"
-"                        <left>Hello <strong>${object.partner_id.name}</strong>.\n"
+"                        <left>Hello <strong>${object.partner_id.name}</"
+"strong>.\n"
 "                        </left>\n"
 "                    </p>\n"
 "                    <p>\n"
-"                        <left>Greetings from <strong>${object.warehouse_id.name}\n"
+"                        <left>Greetings from <strong>${object.warehouse_id."
+"name}\n"
 "                            Hotel</strong>.\n"
 "                        </left>\n"
 "                    </p>\n"
-"                    <p>This email is for reminding you that the Reservation at\n"
-"                        the <strong>${object.warehouse_id.name} Hotel</strong>.\n"
+"                    <p>This email is for reminding you that the Reservation "
+"at\n"
+"                        the <strong>${object.warehouse_id.name} Hotel</"
+"strong>.\n"
 "                        % if object.warehouse_id.partner_id.city:\n"
-"                        <strong>${object.warehouse_id.partner_id.city}</strong>,\n"
+"                        <strong>${object.warehouse_id.partner_id.city}</"
+"strong>,\n"
 "                        % endif\n"
-"                        % if object.warehouse_id.partner_id.country_id.name:\n"
+"                        % if object.warehouse_id.partner_id.country_id."
+"name:\n"
 "                        <strong>\n"
-"                            ${object.warehouse_id.partner_id.country_id.name}</strong>\n"
+"                            ${object.warehouse_id.partner_id.country_id.name}"
+"</strong>\n"
 "                        .\n"
 "                        % endif\n"
 "                        Your checkin has been confirmed on Date <strong>\n"
 "                            ${object.date_order}</strong>.\n"
-"                        Please find all the details regarding to the reservation\n"
+"                        Please find all the details regarding to the "
+"reservation\n"
 "                        as listed below:\n"
 "                    </p>\n"
 "                    <br/>\n"
 "                    <strong>Details :</strong>\n"
 "                    <br/>\n"
-"                    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"                    <p style=\"border-left: 1px solid #8e0000; margin-left: "
+"30px;\">\n"
 "                        &amp;nbsp;&amp;nbsp;Name Of Guest :\n"
 "                        <strong>${object.partner_id.name}</strong>\n"
 "                        <br/>\n"
@@ -63,19 +72,21 @@ msgid ""
 "                        <br/>\n"
 "                        &amp;nbsp;&amp;nbsp;Number Of Persons : <strong>\n"
 "                        ${object.adults}\n"
-"                    </strong> Adults and <strong>${object.children}</strong> Childrens\n"
+"                    </strong> Adults and <strong>${object.children}</strong> "
+"Childrens\n"
 "                        <br/>\n"
 "                    </p>\n"
 "                    &amp;nbsp;&amp;nbsp;\n"
 "                    <strong>Room Rate Per Night:</strong>\n"
 "                    <br/>\n"
 "                    <br/>\n"
-"                    <table border=\"1\" cellpadding=\"4\" style=\"margin-left: 30px;\">\n"
+"                    <table border=\"1\" cellpadding=\"4\" style=\"margin-"
+"left: 30px;\">\n"
 "                        <tr>\n"
 "                            <th>Room No</th>\n"
 "                            <th>Amount</th>\n"
 "                        </tr>\n"
-"                        %for line in object.reservation_line:\n"
+"                        %for line in object.reservation_line_ids:\n"
 "                        %for line2 in line.reserve:\n"
 "                        <tr>\n"
 "                            <td>${line2.product_id.name}</td>\n"
@@ -85,12 +96,15 @@ msgid ""
 "                        %endfor\n"
 "                    </table>\n"
 "                    <br/>\n"
-"                    <p>We would appreciate it if you could let us know in case\n"
+"                    <p>We would appreciate it if you could let us know in "
+"case\n"
 "                        there are any changes in your schedule or program.\n"
-"                        Please inform us immediately, so that we can refund your\n"
+"                        Please inform us immediately, so that we can refund "
+"your\n"
 "                        money according to Hotel policies.\n"
 "                        We are sure that you will find our services\n"
-"                        satisfactory. We look forward to providing you quality\n"
+"                        satisfactory. We look forward to providing you "
+"quality\n"
 "                        services at our hotel.\n"
 "                    </p>\n"
 "                    <br/>\n"
@@ -102,22 +116,26 @@ msgid ""
 "                    [<strong>${object.warehouse_id.name} Hotel</strong>]\n"
 "                    <br/>\n"
 "                    % if object.warehouse_id.partner_id.street:\n"
-"                    <strong>${object.warehouse_id.partner_id.street}</strong>\n"
+"                    <strong>${object.warehouse_id.partner_id.street}</"
+"strong>\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    % if object.warehouse_id.partner_id.city:\n"
-"                    <strong>${object.warehouse_id.partner_id.city}</strong>,\n"
+"                    <strong>${object.warehouse_id.partner_id.city}</"
+"strong>,\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    % if object.warehouse_id.partner_id.country_id.name:\n"
 "                    <strong>\n"
-"                        ${object.warehouse_id.partner_id.country_id.name}</strong>\n"
+"                        ${object.warehouse_id.partner_id.country_id.name}</"
+"strong>\n"
 "                    ,\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    <br/>\n"
 "                    % if object.warehouse_id.partner_id.website:\n"
-"                    <strong>${object.warehouse_id.partner_id.website}</strong>\n"
+"                    <strong>${object.warehouse_id.partner_id.website}</"
+"strong>\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                </p>\n"
@@ -252,54 +270,66 @@ msgid ""
 "                    <p>Hello <strong>${object.partner_id.name}</strong>,\n"
 "                    </p>\n"
 "                    <p>This is to confirm your booking for a room at\n"
-"                        the <strong>${object.warehouse_id.name} Hotel</strong>,\n"
+"                        the <strong>${object.warehouse_id.name} Hotel</"
+"strong>,\n"
 "                        % if object.warehouse_id.partner_id.city:\n"
-"                        <strong>${object.warehouse_id.partner_id.city}</strong>,\n"
+"                        <strong>${object.warehouse_id.partner_id.city}</"
+"strong>,\n"
 "                        % endif\n"
-"                        % if object.warehouse_id.partner_id.country_id.name:\n"
+"                        % if object.warehouse_id.partner_id.country_id."
+"name:\n"
 "                        <strong>\n"
-"                            ${object.warehouse_id.partner_id.country_id.name}</strong>\n"
+"                            ${object.warehouse_id.partner_id.country_id.name}"
+"</strong>\n"
 "                        .\n"
 "                        % endif\n"
-"                        On behalf of the hotel, we would like to express our\n"
+"                        On behalf of the hotel, we would like to express "
+"our\n"
 "                        gratitude to you for choosing our services.\n"
-"                        Please find all the details regarding the confirmation\n"
+"                        Please find all the details regarding the "
+"confirmation\n"
 "                        of the reservation on Date <strong>\n"
-"                            ${format_datetime(object.date_order,tz=user.tz,dt_format='%Y-%m-%d %H:%M:%S')}\n"
+"                            ${format_datetime(object.date_order,tz=user.tz,"
+"dt_format='%Y-%m-%d %H:%M:%S')}\n"
 "                        </strong> are listed below:\n"
 "                    </p>\n"
 "                    <strong>Details :</strong>\n"
 "                    <br/>\n"
-"                    <p style=\"border-left: 1px solid #8e0000; margin-left: 30px;\">\n"
+"                    <p style=\"border-left: 1px solid #8e0000; margin-left: "
+"30px;\">\n"
 "                        Name Of Guest :\n"
 "                        <strong>${object.partner_id.name}</strong>\n"
 "                        <br/>\n"
 "                        Date Of Arrival :\n"
 "                        <strong>\n"
-"                            ${format_datetime(object.checkin,tz=user.tz, dt_format='%Y-%m-%d %H:%M:%S')}\n"
+"                            ${format_datetime(object.checkin,tz=user.tz, "
+"dt_format='%Y-%m-%d %H:%M:%S')}\n"
 "                        </strong>\n"
 "                        <br/>\n"
 "                        Date Of Departure :\n"
 "                        <strong>\n"
-"                            ${format_datetime(object.checkout,tz=user.tz, dt_format='%Y-%m-%d %H:%M:%S')}\n"
+"                            ${format_datetime(object.checkout,tz=user.tz, "
+"dt_format='%Y-%m-%d %H:%M:%S')}\n"
 "                        </strong>\n"
 "                        <br/>\n"
 "                        Reservation Number :\n"
 "                        <strong>${object.reservation_no}</strong>\n"
 "                        <br/>\n"
-"                        Number Of Persons : <strong>${object.adults}</strong> Adults\n"
+"                        Number Of Persons: <strong>${object.adults}</strong> "
+"Adults\n"
 "                        and <strong>${object.children}</strong> Childrens\n"
 "                        <br/>\n"
 "                    </p>\n"
 "                    <strong>Room Rate Per Night:</strong>\n"
 "                    <br/>\n"
 "                    <br/>\n"
-"                    <table border=\"1\" cellpadding=\"4\" style=\"margin-left: 30px;\">\n"
+"                    <table border=\"1\" cellpadding=\"4\" style=\"margin-"
+"left: 30px;\">\n"
 "                        <tr>\n"
 "                            <th>Room No</th>\n"
 "                            <th>Amount</th>\n"
 "                        </tr>\n"
-"                        %for line in object.reservation_line:\n"
+"                        %for line in object.reservation_line_ids:\n"
 "                        %for line2 in line.reserve:\n"
 "                        <tr>\n"
 "                            <td>${line2.product_id.name}</td>\n"
@@ -309,14 +339,18 @@ msgid ""
 "                        %endfor\n"
 "                    </table>\n"
 "                    <br/>\n"
-"                    <p>We would appreciate it if you could let us know in case\n"
+"                    <p>We would appreciate it if you could let us know in "
+"case\n"
 "                        there are any changes in your schedule or program.\n"
-"                        In case you require check-in facilities at an earlier\n"
+"                        In case you require check-in facilities at an "
+"earlier\n"
 "                        time due to flight changes or any other reasons,\n"
-"                        kindly inform us. We are sure that you will find our\n"
+"                        kindly inform us. We are sure that you will find "
+"our\n"
 "                        services satisfactory. In case you need to cancel\n"
 "                        your reservation, please Reply or Call us within 24\n"
-"                        hours before the day of the check-in. We look forward\n"
+"                        hours before the day of the check-in. We look "
+"forward\n"
 "                        to providing you quality services at our hotel.\n"
 "                    </p>\n"
 "                    <br/>\n"
@@ -328,22 +362,26 @@ msgid ""
 "                    [<strong>${object.warehouse_id.name} Hotel</strong>]\n"
 "                    <br/>\n"
 "                    % if object.warehouse_id.partner_id.street:\n"
-"                    <strong>${object.warehouse_id.partner_id.street}</strong>\n"
+"                    <strong>${object.warehouse_id.partner_id.street}</"
+"strong>\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    % if object.warehouse_id.partner_id.city:\n"
-"                    <strong>${object.warehouse_id.partner_id.city}</strong>,\n"
+"                    <strong>${object.warehouse_id.partner_id.city}</"
+"strong>,\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    % if object.warehouse_id.partner_id.country_id.name:\n"
 "                    <strong>\n"
-"                        ${object.warehouse_id.partner_id.country_id.name}</strong>\n"
+"                        ${object.warehouse_id.partner_id.country_id.name}</"
+"strong>\n"
 "                    ,\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                    <br/>\n"
 "                    % if object.warehouse_id.partner_id.website:\n"
-"                    <strong>${object.warehouse_id.partner_id.website}</strong>\n"
+"                    <strong>${object.warehouse_id.partner_id.website}</"
+"strong>\n"
 "                    <br/>\n"
 "                    % endif\n"
 "                </p>\n"
@@ -499,7 +537,7 @@ msgstr "<strong>Data check-out</strong>"
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>From:</strong>"
-msgstr "<strong>Dal:</strong>"
+msgstr "<strong>Da:</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
@@ -511,7 +549,7 @@ msgstr "<strong>Nome ospite</strong>"
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 msgid "<strong>No of Times used</strong>"
-msgstr "<strong>Nr. di volte usato</strong>"
+msgstr "<strong>Nr. di utilizzi</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
@@ -523,7 +561,7 @@ msgstr "<strong>Dettagli camera</strong>"
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkout_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 msgid "<strong>Room No</strong>"
-msgstr "<strong>Camera Nr.</strong>"
+msgstr "<strong>Nr. camera</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
@@ -537,7 +575,7 @@ msgstr "<strong>Tipo camera</strong>"
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_maxroom_qweb
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_room_reservation_qweb
 msgid "<strong>To:</strong>"
-msgstr "<strong>Al:</strong>"
+msgstr "<strong>A:</strong>"
 
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.report_checkin_qweb
@@ -560,16 +598,25 @@ msgid "Action Needed"
 msgstr "Azione richiesta"
 
 #. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_ids
+msgid "Activities"
+msgstr "Attività"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decorazione eccezione attività"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_state
+msgid "Activity State"
+msgstr "Stato attività"
+
+#. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__adults
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__adults
 msgid "Adults"
 msgstr "Adulti"
-
-#. module: hotel_reservation
-#: code:addons/hotel_reservation/models/hotel_reservation.py:0
-#, python-format
-msgid "Adults must be more than 0"
-msgstr "Gli adulti devono essere più di 0"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_reservation_wizard
@@ -612,7 +659,8 @@ msgstr "Ausiliario per avere il resoconto della camera"
 #, python-format
 msgid ""
 "Before choosing a room,\n"
-" You have to select a Check in date or a Check out  date in the reservation form."
+" You have to select a Check in date or a Check out  date in the reservation "
+"form."
 msgstr ""
 "Prima di scegliere una camera,\n"
 " bisogna selezionare una data di check-in o di check-out  nel modulo "
@@ -694,7 +742,7 @@ msgstr "La data di check-out deve essere successiva alla dada di check-in."
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__children
 msgid "Children"
-msgstr "Bambini"
+msgstr "Figli"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__confirm
@@ -749,7 +797,7 @@ msgstr "Cliente"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__date_from
 msgid "Date From"
-msgstr "Data dal"
+msgstr "Dalla data"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__date_order
@@ -759,7 +807,7 @@ msgstr "Ordinato per data"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__date_to
 msgid "Date To"
-msgstr "Data al"
+msgstr "Alla data"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_shipping_id
@@ -773,12 +821,9 @@ msgid "Delivery addressfor current reservation. "
 msgstr "Indirizzo di consegna per la prenotazione corrente. "
 
 #. module: hotel_reservation
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio__display_name
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio_line__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard__display_name
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__display_name
 #: model:ir.model.fields,field_description:hotel_reservation.field_report_hotel_reservation_report_checkin_qweb__display_name
@@ -799,7 +844,7 @@ msgstr "Si vuole realmente creare il foglio?"
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__done
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
 msgid "Done"
-msgstr "Eseguito"
+msgstr "Evasa"
 
 #. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_reservation__state__draft
@@ -810,7 +855,7 @@ msgstr "Bozza"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard__date_end
 msgid "End Date"
-msgstr "Data finale"
+msgstr "Data fine"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__checkin
@@ -823,7 +868,7 @@ msgid "Expected-Date-Departure"
 msgstr "Data-partenza-attesa"
 
 #. module: hotel_reservation
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__folio_id
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__folios_ids
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Folio"
 msgstr "Foglio"
@@ -862,18 +907,18 @@ msgstr "Nome ospite"
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "History"
-msgstr "Storico"
+msgstr "Cronologia"
 
 #. module: hotel_reservation
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__company_id
-#: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__company_id
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__warehouse_id
+#: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__warehouse_id
 msgid "Hotel"
 msgstr "Hotel"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_folio_line
-msgid "Hotel Folio Line"
-msgstr "Riga foglio hotel"
+msgid "Hotel Folio Room Line"
+msgstr "Riga foglio camera hotel"
 
 #. module: hotel_reservation
 #: model:mail.template,subject:hotel_reservation.email_template_hotel_reservation
@@ -892,17 +937,6 @@ msgid "Hotel Reservation Report"
 msgstr "Resoconto prenotazione hotel"
 
 #. module: hotel_reservation
-#: model:ir.actions.server,name:hotel_reservation.Guest_reservation_reminder_24hrs_ir_actions_server
-#: model:ir.cron,cron_name:hotel_reservation.Guest_reservation_reminder_24hrs
-#: model:ir.cron,name:hotel_reservation.Guest_reservation_reminder_24hrs
-msgid ""
-"Hotel Reservation: Booking Reminder before 24 Hours\n"
-"        "
-msgstr ""
-"Prenotazione hotel: promemoria prenotazione 24 ore precedenti\n"
-"        "
-
-#. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_room
 msgid "Hotel Room"
 msgstr "Camera hotel"
@@ -913,17 +947,14 @@ msgid "Hotel Room Reservation"
 msgstr "Prenotazione camera hotel"
 
 #. module: hotel_reservation
-#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__reservation_line
+#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__reservation_line_ids
 msgid "Hotel room reservation details."
 msgstr "Dettagli prenotazione camera hotel."
 
 #. module: hotel_reservation
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio__id
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio_line__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard__id
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__id
 #: model:ir.model.fields,field_description:hotel_reservation.field_report_hotel_reservation_report_checkin_qweb__id
@@ -936,6 +967,16 @@ msgid "ID"
 msgstr "ID"
 
 #. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_exception_icon
+msgid "Icon"
+msgstr "Icona"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icona per indicare un'attività eccezione."
+
+#. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_needaction
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_unread
 msgid "If checked, new messages require your attention."
@@ -946,6 +987,17 @@ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
+
+#. module: hotel_reservation
+#: model:ir.actions.server,name:hotel_reservation.Guest_reservation_reminder_24hrs_ir_actions_server
+#: model:ir.cron,cron_name:hotel_reservation.Guest_reservation_reminder_24hrs
+#: model:ir.cron,name:hotel_reservation.Guest_reservation_reminder_24hrs
+msgid ""
+"Inform Guest About Reservation Before 24 Hours\n"
+"        "
+msgstr ""
+"Informa l'ospite slla prenotazione 24 ore prima\n"
+"        "
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_invoice_id
@@ -964,12 +1016,9 @@ msgid "Is Follower"
 msgstr "Segue"
 
 #. module: hotel_reservation
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio____last_update
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_folio_line____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_wizard____last_update
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation____last_update
 #: model:ir.model.fields,field_description:hotel_reservation.field_report_hotel_reservation_report_checkin_qweb____last_update
@@ -990,7 +1039,7 @@ msgstr "Ultima modifica il"
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__write_uid
 #: model:ir.model.fields,field_description:hotel_reservation.field_wizard_make_folio__write_uid
 msgid "Last Updated by"
-msgstr "Ultima modifica di"
+msgstr "Ultimo aggiornamento di"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__write_date
@@ -1007,11 +1056,6 @@ msgstr "Ultimo aggiornamento il"
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__line_id
 msgid "Line"
 msgstr "Riga"
-
-#. module: hotel_reservation
-#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__adults
-msgid "List of adults there in guest list. "
-msgstr "Elenco degli adulti della lista ospiti. "
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_main_attachment_id
@@ -1031,12 +1075,12 @@ msgstr "Elenco numero massimo camere utilizzate"
 #. module: hotel_reservation
 #: model:ir.actions.report,name:hotel_reservation.hotel_maxroom_details
 msgid "MaxRoom Detail"
-msgstr "Dettaglio massimo camera"
+msgstr "Dettaglio camera Max"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_has_error
 msgid "Message Delivery error"
-msgstr "Errore consegna messaggio"
+msgstr "Errore di consegna messaggio"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_ids
@@ -1049,6 +1093,21 @@ msgid "Name"
 msgstr "Nome"
 
 #. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Scadenza prossima attività"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_summary
+msgid "Next Activity Summary"
+msgstr "Riepilogo prossima attività"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_type_id
+msgid "Next Activity Type"
+msgstr "Tipo prossima attività"
+
+#. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__no_of_folio
 msgid "No. Folio"
 msgstr "Nr. foglio"
@@ -1057,6 +1116,17 @@ msgstr "Nr. foglio"
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_needaction_counter
 msgid "Number of Actions"
 msgstr "Numero di azioni"
+
+#. module: hotel_reservation
+#: code:addons/hotel_reservation/models/hotel_reservation.py:0
+#, python-format
+msgid "Number of Adults must be Positive value."
+msgstr "Il numero di adulti deve essere positivo."
+
+#. module: hotel_reservation
+#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__adults
+msgid "Number of adults there in the guest list. "
+msgstr "Numero degli adulti nell lista ospiti. "
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__children
@@ -1076,7 +1146,7 @@ msgstr "Numero di messaggi che richiedono un'azione"
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Numero di messaggi con errori di consegna"
+msgstr "Numero di messaggi con errore di consegna"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__message_unread_counter
@@ -1086,7 +1156,7 @@ msgstr "Numero di messaggi non letti"
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_search
 msgid "Order By Month"
-msgstr "Ordinato per mese"
+msgstr "Ordina per mese"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__partner_order_id
@@ -1139,7 +1209,7 @@ msgstr "Prenotazione"
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_reservation_line
-#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__reservation_line
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__reservation_line_ids
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.view_hotel_reservation_form
 msgid "Reservation Line"
 msgstr "Riga prenotazione"
@@ -1147,7 +1217,7 @@ msgstr "Riga prenotazione"
 #. module: hotel_reservation
 #: model_terms:ir.ui.view,arch_db:hotel_reservation.hotel_reservation_wizard_form_view
 msgid "Reservation List"
-msgstr "Elenco prenotazione"
+msgstr "Elenco prenotazioni"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__reservation_no
@@ -1173,7 +1243,12 @@ msgstr "Prenotazioni"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation_line__reserve
 msgid "Reserve"
-msgstr "Riserva"
+msgstr "Prenota"
+
+#. module: hotel_reservation
+#: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__activity_user_id
+msgid "Responsible User"
+msgstr "Utente responsabile"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__room_id
@@ -1225,7 +1300,7 @@ msgstr "Riepilogo prenotazione camera"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room__room_reservation_line_ids
 msgid "Room Reserve Line"
-msgstr "Riga riserva camera"
+msgstr "Riga prenotazione camera"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_room_reservation_line__state
@@ -1316,6 +1391,19 @@ msgid "State"
 msgstr "Stato"
 
 #. module: hotel_reservation
+#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Stato in base alle attività\n"
+"Scaduto: la data richiesta è trascorsa\n"
+"Oggi: la data attività è oggi\n"
+"Pianificato: attività future."
+
+#. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_room_reservation_summary__summary_header
 msgid "Summary Header"
 msgstr "Intestazione sommario"
@@ -1332,9 +1420,14 @@ msgid ""
 msgstr "Il nome e l'indirizzo di chi ha chiesto l'ordine o una quotazione."
 
 #. module: hotel_reservation
+#: model:ir.model.fields,help:hotel_reservation.field_hotel_reservation__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo di attività eccezione sul record."
+
+#. module: hotel_reservation
 #: model:ir.model.fields.selection,name:hotel_reservation.selection__hotel_room_reservation_line__state__unassigned
 msgid "Unassigned"
-msgstr "Non assegnato"
+msgstr "Non assegnata"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_unread
@@ -1344,15 +1437,16 @@ msgstr "Messaggi non letti"
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr "Numero messaggi non letti"
+msgstr "Contatore messaggi non letti"
 
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_room.py:0
 #, python-format
 msgid ""
-"User is not able to delete the room after the room in %s state in "
-"reservation"
-msgstr "L'utente non può cancellare la camera dopo che la camera è in stato %s"
+"User is not able to delete the room after the room in %s state in reservation"
+msgstr ""
+"L'utente non può annullare la prenotazione dopo che la camera è prenotata in "
+"stato %s"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_hotel_reservation__website_message_ids
@@ -1376,8 +1470,8 @@ msgstr ""
 
 #. module: hotel_reservation
 #: model:ir.model,name:hotel_reservation.model_hotel_folio
-msgid "hotel folio"
-msgstr "foglio hotel"
+msgid "hotel folio new"
+msgstr "nuovo foglio hotel"
 
 #. module: hotel_reservation
 #: model:ir.model.fields,field_description:hotel_reservation.field_quick_room_reservation__pricelist_id

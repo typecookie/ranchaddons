@@ -1,4 +1,5 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -29,11 +30,11 @@ class SaleAdvancePaymentInv(models.TransientModel):
             folio.room_line_ids.mapped("product_id").write({"isroom": True})
             ctx.update(
                 {
-                    "active_ids": [folio.order_id.id],
+                    "active_ids": folio.order_id.ids,
                     "active_id": folio.order_id.id,
                     "folio_id": folio.id,
                 }
             )
-        res = super(SaleAdvancePaymentInv, self.with_context(ctx)).create_invoices()
+        res = super(SaleAdvancePaymentInv, self.with_context(**ctx)).create_invoices()
 
         return res

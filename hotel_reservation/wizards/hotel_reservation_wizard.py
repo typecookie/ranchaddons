@@ -1,10 +1,11 @@
-# See LICENSE file for full copyright and licensing details.
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
 
 class HotelReservationWizard(models.TransientModel):
-    _name = "hotel.reservation.wizards"
+    _name = "hotel.reservation.wizard"
     _description = "Allow to generate a reservation"
 
     date_start = fields.Datetime("Start Date", required=True)
@@ -52,7 +53,7 @@ class HotelReservationWizard(models.TransientModel):
 
 
 class MakeFolioWizard(models.TransientModel):
-    _name = "wizards.make.folio"
+    _name = "wizard.make.folio"
     _description = "Allow to generate the folio"
 
     grouped = fields.Boolean("Group the Folios")

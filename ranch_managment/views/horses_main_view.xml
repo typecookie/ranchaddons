@@ -1,73 +1,82 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record id="horse_data_action" model="ir.actions.act_window">
         <field name="name">Horse Data</field>
         <field name="res_model">horse.data</field>
         <field name="view_mode">tree,form</field>
     </record>
+
     <record id="horse_data_view_form" model="ir.ui.view">
         <field name="name">Horse Data Form</field>
         <field name="model">horse.data</field>
         <field name="arch" type="xml">
-            <header>
-                <button string="Create Vitals Entry" name="%(action_horse_vitals_wizard)d" type="action"/>
-                <button string="Create Vet Entry" name="%(action_vet_wizard)d" type="action"/>
-        </header>
             <form>
+                <header>
+                    <button name="%(ranch_managment.action_horse_vitals_wizard)d"
+                            string="Create Vitals Entry" type="action"/>
+                    <button name="%(ranch_managment.action_vet_wizard)d" string="Create Vet Entry"
+                            type="action"/>
+                </header>
                 <sheet>
                     <group>
-                        <h1><field name="name"/></h1>
-                    </group>
-
-                    <group>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                         <group>
                             <field name="guest_use"/>
-                            <field name="wrangler_use" />
-                            <field name="advanced" attrs="{'invisible': [('guest_use', '!=', True)]}" />
-                            <field name="intermediate" attrs="{'invisible': [('guest_use', '!=', True)]}" />
-                            <field name="beginner" attrs="{'invisible': [('guest_use', '!=', True)]}"/>
+                            <field name="wrangler_use"/>
+                            <field name="advanced"
+                                   attrs="{'invisible': [('guest_use', '!=', True)]}"/>
+                            <field name="intermediate"
+                                   attrs="{'invisible': [('guest_use', '!=', True)]}"/>
+                            <field name="beginner"
+                                   attrs="{'invisible': [('guest_use', '!=', True)]}"/>
                             <field name="bridle_data"/>
                             <field name="tag_ids" widget="many2many_tags"/>
                         </group>
                         <group>
                             <field name="horse_birth_date"/>
-                            <field name="age" attrs="{'invisible': [('horse_birth_date', '=', False)]}"/>
+                            <field name="age"
+                                   attrs="{'invisible': [('horse_birth_date', '=', False)]}"/>
                             <field name="details"/>
                             <field name="brands"/>
                             <field name="details"/>
                             <field name="purchase_date"/>
                         </group>
                     </group>
+                    <notebook>
+                    <page string="Vet" name="Vet">
+                        <field name="vet_data_ids" readonly='1'>
+                            <tree>
+                                <field name="Diagnosis" required="1"/>
+                                <field name="Treatment" required="1"/>
+                                <field name="Notes" required="1"/>
+                                <field name="Vet_Begin_date"/>
+                                <field name="Vet_End_date"/>
+                                <button string="Delete" name="unlink" type="object"
+                                        confirm="Are you sure you want to delete?"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Vitals" name="Vitals">
+                        <field name="horse_vitals_ids" readonly="1">
+                            <tree>
+                                <field name="Temp" required="1"/>
+                                <field name="BPM" required="1"/>
+                                <field name="Notes" required="1"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
                 </sheet>
-                 <notebook>
-                     <page string="Vet" name="Vet">
-                         <field name="vet_data_ids" readonly='1'>
-                             <tree>
-                                 <field name="Diagnosis" required="1"/>
-                                 <field name="Treatment" required="1"/>
-                                 <field name="Notes" required="1"/>
-                                 <field name="Vet_Begin_date"/>
-                                 <field name="Vet_End_date"/>
-                                 <button string="Delete" name="unlink" type="object" confirm="Are you sure you want to delete?"/>
-                             </tree>
-                         </field>
-                     </page>
-                     <page string="Vitals" name="Vitals">
-                         <field name="horse_vitals_ids" readonly="1">
-                             <tree>
-                                 <field name="Temp" required="1"/>
-                                 <field name="BPM" required="1"/>
-                                 <field name="Notes" required="1"/>
-                             </tree>
-                         </field>
-                     </page>
-                 </notebook>
-                 <div class="oe_chatter">
-                     <field name="message_follower_ids"/>
-                     <field name="message_ids"/>
-                 </div>
 
-<!--                <table>-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+                <!--                <table>-->
 <!--                    <tr>-->
 <!--                        <td>-->
 <!--                            <group>-->
@@ -114,4 +123,7 @@
             </tree>
         </field>
     </record>
+
+    <menuitem name="Ranch Management" id="ranch_management_base_menu"/>
+    <menuitem name="Horses" id="horse_data_menu" parent="ranch_management_base_menu" action="horse_data_action"/>
 </odoo>

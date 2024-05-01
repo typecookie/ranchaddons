@@ -904,7 +904,7 @@ msgstr ""
 #. module: hotel_reservation
 #: code:addons/hotel_reservation/models/hotel_room.py:0
 #, fuzzy, python-format
-msgid "Please Check Rooms Status for %s."
+msgid 'Please Check Rooms Status for', %s
 msgstr "Hotel Room Reservation"
 
 #. module: hotel_reservation
@@ -1219,8 +1219,8 @@ msgstr "to"
 #~ msgid "Resevr# No"
 #~ msgstr "Resevr# No"
 
-#~ msgid "wizards.make.folio"
-#~ msgstr "wizards.make.folio"
+#~ msgid "wizard.make.folio"
+#~ msgstr "wizard.make.folio"
 
 #~ msgid "Room summary"
 #~ msgstr "Room summary"
@@ -1237,8 +1237,8 @@ msgstr "to"
 #~ msgid "Price list"
 #~ msgstr "Price list"
 
-#~ msgid "hotel.reservation.wizards"
-#~ msgstr "hotel.reservation.wizards"
+#~ msgid "hotel.reservation.wizard"
+#~ msgstr "hotel.reservation.wizard"
 
 #~ msgid "room.reservation.summary"
 #~ msgstr "room.reservation.summary"

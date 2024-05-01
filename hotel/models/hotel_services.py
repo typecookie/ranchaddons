@@ -1,5 +1,5 @@
-# See LICENSE file for full copyright and licensing details.
-
+# Copyright (C) 2022-TODAY Serpent Consulting Services Pvt. Ltd. (<http://www.serpentcs.com>).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
 from odoo.osv import expression
@@ -23,7 +23,7 @@ class HotelServices(models.Model):
         required=True,
         ondelete="restrict",
     )
-    product_manager = fields.Many2one("res.users", "Product Manager")
+    product_manager = fields.Many2one("res.users")
 
     @api.model
     def create(self, vals):
@@ -58,7 +58,12 @@ class HotelServiceType(models.Model):
         "hotel.service.type", "service_id", "Service Child Categories"
     )
     product_categ_id = fields.Many2one(
-        "product.category", "Product Category", delegate=True, required=True, copy=False
+        "product.category",
+        "Product Category",
+        delegate=True,
+        required=True,
+        copy=False,
+        ondelete="restrict",
     )
 
     @api.model
