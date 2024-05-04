@@ -8,11 +8,10 @@
     'depends': ['mail'],
     'data': [
         'security/ir.model.access.csv',
-        'wizards/horse_vitals_wizard_views.xml',
-        'wizards/vet_wizard_views.xml',
         'views/horses_main_view.xml',
         'views/saddle_main_view.xml',
         'views/company_ranch_date_view.xml',
+        'views/vehicles.xml',
     ],
     'installable': True,
     'auto_install': False,

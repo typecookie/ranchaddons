@@ -1,13 +1,15 @@
 <odoo>
     <template id="guestlist_barn_report_document">
-        <t t-call="web.basic_layout">
+        <t t-call="web.minimal_layout">
             <div class="container">
                 <table class="table">
+                    table
                     <t t-foreach="docs" t-as="doc"><!-- for Loop -->
                         <tr>
                             <td>
                                 <span t-esc="doc['name']"/>
                             </td>
+                            this
                             <td colspan="2">
                                 <span t-esc="doc['rooms']"/><br/>
                             </td>
@@ -43,7 +45,7 @@
 
     <record id="guestlist_barn_report" model="ir.actions.report">
         <field name="name">Guest List Barn Report</field>
-        <field name="model">guestlist.barn.report.wizard</field>
+        <field name="model">guestlist.barn.report.wizards</field>
         <field name="report_type">qweb-html</field>
         <field name="report_name">guestreports.guestlist_barn_report_document</field>
         <field name="report_file">guestreports.guestlist_barn_report_document</field>

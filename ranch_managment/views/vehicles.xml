@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="vehicle_data_action" model="ir.actions.act_window">
+        <field name="name">Vehicle Data</field>
+        <field name="res_model">vehicle.data</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="vehicle_data_view_form" model="ir.ui.view">
+        <field name="name">Vehicle Data Form</field>
+        <field name="model">vehicle.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                    <group>
+                        <h1><field name="vin"/></h1>
+                        <field name="purchase_date"/>
+                        <field name="purchase_price"/>
+                    </group>
+                    <group>
+                        <field name="make"/>
+                        <field name="model"/>
+                        <field name="year"/>
+                    </group>
+                    <group>
+                        <field name="mileage"/>
+                        <field name="hours"/>
+                        <field name="tire_pressure"/>
+                    </group>
+                    </group>
+                    <notebook>
+                        <page string="Maintenance" name="Maintenance">
+                            <field name="maintenance_id">
+                            <tree>
+                                <field name="date"/>
+                                <field name="mileage"/>
+                                <field name="shop"/>
+                                <field name="oil_change"/>
+                                <field name="air_filter"/>
+                                <field name="tire_rotate"/>
+                                <field name="grease"/>
+                                <field name="washer_fluid"/>
+                                <field name="hydraulic_fluid"/>
+                                <field name="checkup"/>
+                            </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="Vehicle_data_view_tree" model="ir.ui.view">
+        <field name="name">Vehicle Data Form</field>
+        <field name="model">vehicle.data</field>
+         <field name="arch" type="xml">
+            <tree>
+                <field name="vin"/>
+           </tree>
+        </field>
+    </record>
+    <menuitem id="vehicle_menu" name="Vehicles" parent="ranch_management_base_menu"/>
+    <menuitem id="vehicle_data_menu" name="Vehicle Data" parent="vehicle_menu" action="vehicle_data_action"/>
+
+</odoo>

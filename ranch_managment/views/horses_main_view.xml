@@ -13,10 +13,6 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="%(ranch_managment.action_horse_vitals_wizard)d"
-                            string="Create Vitals Entry" type="action"/>
-                    <button name="%(ranch_managment.action_vet_wizard)d" string="Create Vet Entry"
-                            type="action"/>
                 </header>
                 <sheet>
                     <group>
@@ -45,30 +41,28 @@
                             <field name="purchase_date"/>
                         </group>
                     </group>
-                    <notebook>
-                    <page string="Vet" name="Vet">
-                        <field name="vet_data_ids" readonly='1'>
-                            <tree>
-                                <field name="Diagnosis" required="1"/>
-                                <field name="Treatment" required="1"/>
-                                <field name="Notes" required="1"/>
-                                <field name="Vet_Begin_date"/>
-                                <field name="Vet_End_date"/>
-                                <button string="Delete" name="unlink" type="object"
-                                        confirm="Are you sure you want to delete?"/>
-                            </tree>
-                        </field>
-                    </page>
-                    <page string="Vitals" name="Vitals">
-                        <field name="horse_vitals_ids" readonly="1">
-                            <tree>
-                                <field name="Temp" required="1"/>
-                                <field name="BPM" required="1"/>
-                                <field name="Notes" required="1"/>
-                            </tree>
-                        </field>
-                    </page>
-                </notebook>
+<notebook>
+    <page string="Vet" name="Vet">
+        <field name="vet_data_ids">
+            <tree editable="bottom">
+                <field name="Diagnosis" required="1"/>
+                <field name="Treatment" required="1"/>
+                <field name="Notes" required="1"/>
+                <field name="Vet_Begin_date"/>
+                <field name="Vet_End_date"/>
+            </tree>
+        </field>
+    </page>
+    <page string="Vitals" name="Vitals">
+        <field name="horse_vitals_ids">
+            <tree editable="bottom">
+                <field name="Temp" required="1"/>
+                <field name="BPM" required="1"/>
+                <field name="Notes" required="1"/>
+            </tree>
+        </field>
+    </page>
+</notebook>
                 </sheet>
 
                 <div class="oe_chatter">
@@ -76,40 +70,6 @@
                     <field name="message_ids"/>
                 </div>
 
-                <!--                <table>-->
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <group>-->
-<!--                                <field name="name"/>-->
-<!--                            </group>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "image_1920"}'/>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <td>-->
-<!--                            <group>-->
-<!--                                <field name="guest_use"/>-->
-<!--                                <field name="wrangler_use" />-->
-<!--                                <field name="advanced" attrs="{'invisible': [('guest_use', '!=', True)]}" />-->
-<!--                                <field name="intermediate" attrs="{'invisible': [('guest_use', '!=', True)]}" />-->
-<!--                                <field name="beginner" attrs="{'invisible': [('guest_use', '!=', True)]}"/>-->
-<!--                                <field name="bridle_data"/>-->
-<!--                            </group>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <group>-->
-<!--                                <field name="horse_birth_date"/>-->
-<!--                                <field name="age" attrs="{'invisible': [('horse_birth_date', '=', False)]}"/>-->
-<!--                                <field name="details"/>-->
-<!--                                <field name="brands"/>-->
-<!--                                <field name="details"/>-->
-<!--                                <field name="purchase_date"/>-->
-<!--                            </group>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                </table>-->
             </form>
         </field>
     </record>

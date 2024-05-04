@@ -57,9 +57,10 @@ class ReportGuestListBarnReport(models.AbstractModel):
                     'saddle_request': member.saddle_request,
                     'saddle_assigned': member.saddle_assigned,
                 })
-
             room_list = reservation.reservation_line.mapped('reserve.name')  # ['a', 'b', 'c']
             rooms = ', '.join(map(str, room_list))  # a, b, c
+            print('this')
+            print(member_list)
 
             docs.append({
                 'name': reservation.partner_id.name,
@@ -76,9 +77,11 @@ class ReportGuestListBarnReport(models.AbstractModel):
                 'anniversaries': reservation.partner_id.anniversaries,
                 'birthdays': reservation.partner_id.birthdays,
             })
-
+        print('docs')
+        print(docs)
         return {
             'doc_ids': self.ids,
             'doc_model': data['model'],
             'docs': docs,
+            'o': self.env['guestlist.barn.report.wizards'].browse(docids),
         }
