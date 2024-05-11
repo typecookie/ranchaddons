@@ -1,6 +1,5 @@
 <odoo>
     <template id="guestlist_display_report_document">
-        <t t-call="web.basic_layout">
             <div class="container">
                 <div class="row">
                     <t t-foreach="docs" t-as="doc">
@@ -58,7 +57,6 @@
                 <!--                    </t>-->
                 <!--                </table>-->
             </div>
-        </t>
     </template>
 
     <record id="guestlist_display_report" model="ir.actions.report">

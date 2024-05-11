@@ -1,6 +1,5 @@
 <odoo>
     <template id="guestlist_kitchen_report_document">
-        <t t-call="web.basic_layout">
             <div class="container">
                 <table class="table">
                     <t t-foreach="docs" t-as="doc"><!-- for Loop -->
@@ -36,7 +35,6 @@
                     </t>
                 </table>
             </div>
-        </t>
     </template>
 
     <record id="guestlist_kitchen_report" model="ir.actions.report">

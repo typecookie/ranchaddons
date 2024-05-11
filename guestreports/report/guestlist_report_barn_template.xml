@@ -1,15 +1,13 @@
 <odoo>
     <template id="guestlist_barn_report_document">
-        <t t-call="web.minimal_layout">
+
             <div class="container">
                 <table class="table">
-                    table
                     <t t-foreach="docs" t-as="doc"><!-- for Loop -->
                         <tr>
                             <td>
                                 <span t-esc="doc['name']"/>
                             </td>
-                            this
                             <td colspan="2">
                                 <span t-esc="doc['rooms']"/><br/>
                             </td>
@@ -40,7 +38,7 @@
                     </t>
                 </table>
             </div>
-        </t>
+
     </template>
 
     <record id="guestlist_barn_report" model="ir.actions.report">

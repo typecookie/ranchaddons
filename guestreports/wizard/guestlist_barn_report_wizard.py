@@ -36,7 +36,6 @@ class ReportGuestListBarnReport(models.AbstractModel):
         docs = []
         reservations = self.env['hotel.reservation'].search([('checkin', '>', date_start), ('checkout', '<', date_end)])
         for reservation in reservations:
-
             member_list = []
             for member in reservation.partner_id.child_ids:
                 # odoo takes care of joins/ foren keys
@@ -59,13 +58,10 @@ class ReportGuestListBarnReport(models.AbstractModel):
                 })
             room_list = reservation.reservation_line.mapped('reserve.name')  # ['a', 'b', 'c']
             rooms = ', '.join(map(str, room_list))  # a, b, c
-            print('this')
-            print(member_list)
 
             docs.append({
                 'name': reservation.partner_id.name,
                 'rooms': rooms,
-                'member_list': member_list,
                 'cabin_owner': reservation.partner_id.cabin_owner,
                 'number_of_years_return': reservation.partner_id.number_of_years_return,
                 'cabin_preference': reservation.partner_id.cabin_preference,
@@ -76,9 +72,8 @@ class ReportGuestListBarnReport(models.AbstractModel):
                 'state': reservation.partner_id.state_id.name,
                 'anniversaries': reservation.partner_id.anniversaries,
                 'birthdays': reservation.partner_id.birthdays,
+                'member_list': member_list,
             })
-        print('docs')
-        print(docs)
         return {
             'doc_ids': self.ids,
             'doc_model': data['model'],
