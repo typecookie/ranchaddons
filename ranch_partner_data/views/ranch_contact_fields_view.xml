@@ -8,13 +8,12 @@
 
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button string="Assign Horse" name="%(action_horse_assign_wizard)d" type="action" attrs="{'invisible': [('is_company', '=', True)]}" />
-                    <button string="Assign Saddle" name="%(action_saddle_assign_wizard)d" type="action" attrs="{'invisible': [('is_company', '=', True)]}" />
+                    <button string="Assign Horse" name="%(action_horse_assign_wizard)d" type="action"  attrs="{'invisible': [('is_company', '=', True)]}" />
+                    <button string="Assign Saddle" name="%(action_saddle_assign_wizard)d" type="action"  attrs="{'invisible': [('is_company', '=', True)]}" />
                 </header>
             </xpath>
 
             <xpath expr="//field[@name='vat']" position="after">
-                <field name="vat" attrs="{'invisible'}"/>
                 <field name="Family" attrs="{'invisible': [('is_company', '=', False)]}"/>
                 <field name="Sex" attrs="{'invisible': [('is_company', '=', True)]}"/>
                 <field name="Height" attrs="{'invisible': [('is_company', '=', True)]}"/>
@@ -22,8 +21,7 @@
                 <field name="Exp" attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='birthdate_date' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='horse_request' attrs="{'invisible': [('is_company', '=', True)]}" />
-<!--                TODO: uncomment this-->
-<!--                <field name='horse_assigned' attrs="{'invisible': [('is_company', '=', True)]}" readonly="1"/>-->
+                <field name='horse_assigned' attrs="{'invisible': [('is_company', '=', True)]}" readonly="1"/>
                 <field name='saddle_request' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name='saddle_assigned' attrs="{'invisible': [('is_company', '=', True)]}" />
                 <field name="age" attrs="{'invisible': [('birthdate_date', '=', False)]}"/>
@@ -33,6 +31,8 @@
                 <field name="deposit_request_sent" attrs="{'invisible': [('is_company', '=', False)]}" />
                 <field name="deposit_request_received" attrs="{'invisible': [('is_company', '=', False)]}" />
                 <field name="deposit_request_received_date" attrs="{'invisible': [('is_company', '=', False)]}" />
+
+
             </xpath>
 
             <xpath expr="//notebook" position="inside">
@@ -64,12 +64,11 @@
                             <field name="checkin" />
                             <field name="checkout" />
                             <field name="state" />
-<!--                            TODO: Need to uncomment these fields (coming from One2many in reservation_ids field. hotel_reservation module no longer use it)-->
-<!--                            <field name="is_driving" string="Driving?"/>-->
-<!--                            <field name="flight_number" string="Flight Number"/>-->
-<!--                            <field name="airport" string="airport"/>-->
-<!--                            <field name="arrival_time" string="arrival_time"/>-->
-<!--                            <field name="departure_time" string="departure_time"/>-->
+                            <field name="is_driving" string="Driving?"/>
+                            <field name="flight_number" string="flight_number"/>
+                            <field name="airport" string="airport"/>
+                            <field name="arrival_time" string="arrival_time"/>
+                            <field name="departure_time" string="departure_time"/>
                         </tree>
                     </field>
                 </page>
