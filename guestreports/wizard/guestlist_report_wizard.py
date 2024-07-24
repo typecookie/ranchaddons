@@ -63,6 +63,13 @@ class ReportGuestListReport(models.AbstractModel):
 
             docs.append({
                 'name': reservation.partner_id.name,
+                'street': reservation.partner_id.street,
+                'street2': reservation.partner_id.street2,
+                'city': reservation.partner_id.city,
+                'state': reservation.partner_id.state_id.name,
+                'zip': reservation.partner_id.zip,
+                'email': reservation.partner_id.email,
+
                 'rooms': rooms,
                 'member_list': member_list,
                 'cabin_owner': reservation.partner_id.cabin_owner,

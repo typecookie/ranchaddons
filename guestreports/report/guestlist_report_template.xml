@@ -1,57 +1,88 @@
 <odoo>
     <template id="guestlist_report_document">
-            <div class="container">
-                <table class="table">
-                    <t t-foreach="docs" t-as="doc"><!-- for Loop -->
-                        <tr>
-                            <td>
-                                <span t-esc="doc['name']"/>
-                            </td>
-                            <td colspan="2">
-                                <span t-esc="doc['rooms']"/><br/>
-                                Number Of Years: <span t-esc="doc['number_of_years_return']"/>
-                            </td>
-                        </tr>
-                        <t t-foreach="doc['member_list']" t-as="member">
-                            <tr>
-                                <td>
-                                    <a t-attf-href="/web#id={{ member['id'] }}&amp;view_type=form&amp;model=res.partner" target="_blank"><span t-esc="member['name']"/></a><br/>
-                                    Height: <span t-esc="member['height']"/><br/>
-                                    Weight: <span t-esc="member['weight']"/><br/>
-                                    Age: <span t-esc="member['age']"/><br/>
-                                    Sex: <span t-esc="member['sex']"/><br/>
-                                </td>
-                                <td>
-                                    Experience: <span t-esc="member['experience']"/><br/>
-                                    Horse Request: <span t-esc="member['horse_request']"/><br/>
-                                    Horse Assigned: <span t-esc="member['horse_assigned']"/><br/>
-                                    Saddle Request: <span t-esc="member['saddle_request']"/><br/>
-                                    Saddle Assigned: <span t-esc="member['saddle_assigned']"/><br/>
-                                </td>
-                                <td>
-                                    Dietary Needs: <span t-esc="member['dietary_needs']"/><br/>
-                                    Food Allergies: <span t-esc="member['food_allergies']"/><br/>
-                                    Health Conditions: <span t-esc="member['health_conditions']"/><br/>
-                                    Health Requests: <span t-esc="member['health_requests']"/><br/>
-                                </td>
-                            </tr>
+        <div class="container">
+            <table style="width:100%">
+                <t t-foreach="docs" t-as="doc">
+                    <!-- Each row represents 2 docs (if available) -->
+                    <tr>
+                        <td>
+                            <span t-esc="doc['rooms']"/><br/>
+                            <strong><span t-esc="doc['name']"/></strong>
+                            <span t-esc="doc['street']"/><br/>
+                            <span t-esc="doc['street2']"/><br/>
+                            <span t-esc="doc['city']"/><span t-esc="doc['state']"/> <span t-esc="doc['zip']"/> <br/>
+                            <span t-esc="doc['email']"/>
+
+                            Number Of Years: <span t-esc="doc['number_of_years_return']"/>
+                            <table style="width:100%">
+                                <t t-foreach="doc['member_list']" t-as="member">
+                                    <tr>
+                                        <td>
+                                            <a t-attf-href="/web#id={{ member['id'] }}&amp;view_type=form&amp;model=res.partner" target="_blank"><span t-esc="member['name']"/></a> :<span t-esc="member['age']"/> <br/>
+                                        </td>
+                                        <td>
+                                            <t t-if="member['dietary_needs']">
+                                                Dietary Needs: <span t-esc="member['dietary_needs']"/><br/>
+                                            </t>
+                                            <t t-if="member['food_allergies']">
+                                                Food Allergies: <span t-esc="member['food_allergies']"/><br/>
+                                            </t>
+                                            <t t-if="member['health_conditions']">
+                                                Health Conditions: <span t-esc="member['health_conditions']"/><br/>
+                                            </t>
+                                            <t t-if="member['health_requests']">
+                                                Health Requests: <span t-esc="member['health_requests']"/><br/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                            <span t-esc="doc['birthdays']"/>
+                            <span t-esc="doc['anniversaries']"/><br/>
+
+                        </td>
+                        <t t-if="(docs.index(doc) + 1) &lt; len(docs)">
+                            <t t-set="doc" t-value="docs[docs.index(doc)+1]"/>
+                                                     <td>
+                           <span t-esc="doc['rooms']"/><br/>
+                            <strong><span t-esc="doc['name']"/></strong>
+                            <span t-esc="doc['street']"/><br/>
+                            <span t-esc="doc['street2']"/><br/>
+                            <span t-esc="doc['city']"/><span t-esc="doc['state']"/> <span t-esc="doc['zip']"/> <br/>
+                            <span t-esc="doc['email']"/>
+
+                            Number Of Years: <span t-esc="doc['number_of_years_return']"/>
+                            <table style="width:100%">
+                                 <t t-foreach="doc['member_list']" t-as="member">
+                                    <tr>
+                                        <td>
+                                            <a t-attf-href="/web#id={{ member['id'] }}&amp;view_type=form&amp;model=res.partner" target="_blank"><span t-esc="member['name']"/></a> :<span t-esc="member['age']"/> <br/>
+                                        </td>
+                                        <td>
+                                            <t t-if="member['dietary_needs']">
+                                                Dietary Needs: <span t-esc="member['dietary_needs']"/><br/>
+                                            </t>
+                                            <t t-if="member['food_allergies']">
+                                                Food Allergies: <span t-esc="member['food_allergies']"/><br/>
+                                            </t>
+                                            <t t-if="member['health_conditions']">
+                                                Health Conditions: <span t-esc="member['health_conditions']"/><br/>
+                                            </t>
+                                            <t t-if="member['health_requests']">
+                                                Health Requests: <span t-esc="member['health_requests']"/><br/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                            <span t-esc="doc['birthdays']"/>
+                            <span t-esc="doc['anniversaries']"/><br/>
+                        </td>
                         </t>
-                        <tr>
-                            <td>
-                                <!--<t t-if="doc['cabin_owner'] = True">-->
-                                    Is Cabin Owner: <span t-esc="doc['cabin_owner']"/><br/>
-                                <!--</t>-->
-                                Cabin Preference: <span t-esc="doc['cabin_preference']"/><br/>
-                                deposit request sent: <span t-esc="doc['deposit_request_sent']"/><br/>
-                                deposit request received: <span t-esc="doc['deposit_request_received']"/><br/>
-                                deposit request received date: <span t-esc="doc['deposit_request_received_date']"/><br/>
-                                Birthdays: <span t-esc="doc['birthdays']"/><br/>
-                                Anniversaries: <span t-esc="doc['anniversaries']"/>
-                            </td>
-                        </tr>
-                    </t>
-                </table>
-            </div>
+                    </tr>
+                </t>
+            </table>
+        </div>
     </template>
 
     <record id="guestlist_report" model="ir.actions.report">
@@ -61,5 +92,4 @@
         <field name="report_name">guestreports.guestlist_report_document</field>
         <field name="report_file">guestreports.guestlist_report_document</field>
     </record>
-
 </odoo>
