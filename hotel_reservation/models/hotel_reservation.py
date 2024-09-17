@@ -130,6 +130,7 @@ class HotelReservation(models.Model):
     airport = fields.Char()
     arrival_time = fields.Datetime()
     departure_time = fields.Datetime()
+    release_form = fields.Boolean(string="Release Form?")
 
 
     def unlink(self):
