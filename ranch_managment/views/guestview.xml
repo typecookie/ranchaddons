@@ -1,0 +1,71 @@
+<odoo>
+
+    <record id="guest_family_action" model="ir.actions.act_window">
+       <field name="name">Guest Family</field>
+       <field name="res_model">guest.family.data</field>
+       <field name="view_mode">tree,form</field> <!-- Adjust view_mode as needed -->
+   </record>
+
+    <record id="view_guest_family_form" model="ir.ui.view">
+        <field name="name">guest.family.form</field>
+        <field name="model">guest.family.data</field>
+        <field name="arch" type="xml">
+            <form string="Family Details">
+                <sheet>
+                    <group>
+                        <field name="lastname" />
+                        <field name="firstname" />
+                        <field name="tag_ids" widget="many2many_tags"/>
+                        <field name="number_of_years_return" />
+                        <field name="cabin_owner" />
+                        <field name="cabin_preference" />
+                        <field name="image_1920" widget="image" class="oe_avatar" options="{'size':[90, 90]}"/>
+                        <field name="streetline1" />
+                        <field name="streetline2" />
+                        <field name="city" />
+                        <field name="state_id" />
+                        <field name="country_id" />
+                        <field name="zip" />
+                        <field name="phone" />
+                        <field name="mobile" />
+                        <field name="email" />
+                        <field name="fax" />
+                        <field name="website" />
+                    </group>
+
+                    <notebook>
+                        <page string="Important Dates">
+                            <group>
+                                <field name="anniversaries" widget="textarea" />
+                                <field name="birthdays" widget="textarea" />
+                            </group>
+                        </page>
+                        <page string="Family Members">
+                            <field name="member_ids" mode="tree">
+                                <tree string="Members">
+                                    <field name="image_1920" widget="image" class="oe_avatar" options="{'size': [90, 90]}"/>
+                                    <field name="firstname"/>
+                                    <field name="lastname"/>
+                                    <field name="height"/>
+                                    <field name="weight"/>
+                                    <field name="exp"/>
+                                    <field name="food_allergies" widget="textarea"/>
+                                    <field name="dietary_needs" widget="textarea"/>
+                                    <field name="health_conditions" widget="textarea"/>
+                                    <field name="health_requests" widget="textarea"/>
+                                    <field name="horse_request"/>
+                                    <field name="saddle_request"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+     <menuitem id="guest_family_menu"
+              name="Guest Family"
+              parent="ranch_management_base_menu" action="guest_family_action"/> <!-- Update with actual parent menu ID -->
+
+
+</odoo>

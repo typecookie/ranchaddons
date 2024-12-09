@@ -3,7 +3,10 @@ access_menus,access_menus,model_horse_data,base.group_user,1,1,1,1
 access_saddle_main_view,access_saddle_main_view,model_saddle_data,base.group_user,1,1,1,1
 access_horses_tag_view,access_horses_tag_view,model_horse_data_tag,base.group_user,1,1,1,1
 access_saddle_tag_view,access_saddle_tag_view,model_saddle_data_tag,base.group_user,1,1,1,1
+access_family_data_tag_view,access_family_data_tag_view,model_family_data_tag,base.group_user,1,1,1,1
 access_vet_data_view,access_vet_data_view,model_vet_data,base.group_user,1,1,1,1
 access_horse_vitals,access_horse_vitals,model_horse_vitals,base.group_user,1,1,1,1
 access_vehicle_data,access_vehicle_data,model_vehicle_data,base.group_user,1,1,1,1
 access_vehicle_maintenance,access_vehicle_maintenance,model_vehicle_maintenance,base.group_user,1,1,1,1
+access_guest_family_data,access_guest_family_data,model_guest_family_data,base.group_user,1,1,1,1
+access_family_members_data,access_family_members_data,model_family_member_data,base.group_user,1,1,1,1

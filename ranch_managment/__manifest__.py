@@ -12,7 +12,9 @@
         'views/saddle_main_view.xml',
         'views/company_ranch_date_view.xml',
         'views/vehicles.xml',
+        'views/guestview.xml'
     ],
     'installable': True,
     'auto_install': False,
+    'application': True,
 }
