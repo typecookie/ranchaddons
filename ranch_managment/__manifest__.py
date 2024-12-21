@@ -12,7 +12,8 @@
         'views/saddle_main_view.xml',
         'views/company_ranch_date_view.xml',
         'views/vehicles.xml',
-        'views/guestview.xml'
+        'views/guestview.xml',
+        'views/cabindata.xml'
     ],
     'installable': True,
     'auto_install': False,

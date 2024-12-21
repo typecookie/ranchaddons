@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="cabin_data_action" model="ir.actions.act_window">
+        <field name="name">cabin Data</field>
+        <field name="res_model">cabins.data</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<record id="view_cabins_form" model="ir.ui.view">
+    <field name="name">cabins.data.form</field>
+    <field name="model">cabins.data</field>
+    <field name="arch" type="xml">
+        <form string="Cabin">
+            <sheet>
+                <group>
+                    <field name="cabin_name_number"/>
+                    <field name="cabin_min"/>
+                    <field name="cabin_max"/>
+                </group>
+                <notebook>
+                    <page string="Maintanice">
+                        <field name="cabin_maintanice_ids">
+                            <tree editable="bottom">
+                                <field name="description"/>
+                                <field name="request"/>
+                                <field name="request_date"/>
+                                <field name="complete_date"/>
+                                <field name="notes"/>
+                                <field name="total_cost"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Inventory">
+                        <field name="canin_inventory_ids">
+                            <tree editable="bottom">
+                                <field name="common_name"/>
+                                <field name="part_number"/>
+                                <field name="item_id"/>
+                                <field name="quantity"/>
+                                <field name="unit_price"/>
+                                <field name="total_price"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <record id="cabin_data_view_tree" model="ir.ui.view">
+        <field name="name">Cabin Data Form</field>
+        <field name="model">cabins.data</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="cabin_name_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem name="Ranch Management" id="ranch_management_base_menu"/>
+    <menuitem name="cabins" id="cabin_data_menu" parent="ranch_management_base_menu" action="cabin_data_action"/>
+
+</odoo>

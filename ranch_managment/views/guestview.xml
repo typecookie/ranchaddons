@@ -34,6 +34,16 @@
                     </group>
 
                     <notebook>
+                        <page string="Reservations">
+                            <field name="reservation_ids">
+                                <tree string="Reservations">
+                                    <field name="check_in"/>
+                                    <field name="check_out"/>
+                                    <field name="room_ids" widget="many2many_tags"/>
+                                    <!-- include other reservation fields you want to display -->
+                                </tree>
+                            </field>
+                        </page>
                         <page string="Important Dates">
                             <group>
                                 <field name="anniversaries" widget="textarea" />

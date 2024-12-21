@@ -6,6 +6,8 @@
        <menuitem name="Saddles" id="saddle_data_menu" parent="ranch_management_base_menu" action="ranch_managment.saddle_data_action"/>
        <menuitem name="Vehicles" id="vehicle_data_menu" parent="ranch_management_base_menu" action="vehicle_data_action"/>
        <menuitem name="Guest" id="Guest_data_menu" parent="ranch_management_base_menu" action="guest_family_action"/>
+       <menuitem name="Cabins" id="Cabin_data_menu" parent="ranch_management_base_menu" action="guest_family_action"/>
+
 
    </data>
 </odoo>

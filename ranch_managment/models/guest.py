@@ -30,8 +30,9 @@ class GuestFamilyData(models.Model):
     fax = fields.Char()
     website = fields.Char()
     tag_ids = fields.Many2many('family.data.tag', string='Tags')
-
-
+    reservation_ids = fields.Many2many('reservation.reservation', 'reservation_family_rel', 'family_id',
+                                       'reservation_id',
+                                       string='Reservations')
 class FamilyDataTag(models.Model):
     _name = 'family.data.tag'
     _description = "Family Tag table"
