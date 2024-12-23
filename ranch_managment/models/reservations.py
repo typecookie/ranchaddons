@@ -18,3 +18,4 @@ class Reservation(models.Model):
     deposit_request_received = fields.Boolean()
     deposit_request_received_date = fields.Date()
     state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('cancelled', 'Cancelled')], default='draft')
+    release_form_signed =  fields.Boolean()
