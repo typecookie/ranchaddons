@@ -5,6 +5,12 @@
        <field name="res_model">guest.family.data</field>
        <field name="view_mode">tree,form</field> <!-- Adjust view_mode as needed -->
    </record>
+        <record id="action_reservation_wizard" model="ir.actions.act_window">
+            <field name="name">Reservation Wizard</field>
+            <field name="res_model">reservation.reservation</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
 
     <record id="view_guest_family_form" model="ir.ui.view">
         <field name="name">guest.family.form</field>
@@ -32,7 +38,7 @@
                         <field name="fax" />
                         <field name="website" />
                     </group>
-
+                      <button name="%(ranch_managment.action_reservation_wizard)d" type="action" string="Create New Reservation"/>
                     <notebook>
                         <page string="Reservations">
                             <field name="reservation_ids">
@@ -65,6 +71,13 @@
                                     <field name="health_requests" widget="textarea"/>
                                     <field name="horse_request"/>
                                     <field name="saddle_request"/>
+                                    <field name="reservation_member_ids" widget="one2many" context="{'default_member_id': active_id}">
+                                        <tree string="Reservations">
+                                            <field name="reservation_id"/>
+                                            <field name="check_in"/>
+                                            <field name="release_form_signed"/>
+                                        </tree>
+                                    </field>
                                 </tree>
                             </field>
                         </page>
@@ -75,7 +88,7 @@
     </record>
      <menuitem id="guest_family_menu"
               name="Guest Family"
-              parent="ranch_management_base_menu" action="guest_family_action"/> <!-- Update with actual parent menu ID -->
+              parent="ranch_management_base_menu" action="guest_family_action"/>
 
 
 </odoo>

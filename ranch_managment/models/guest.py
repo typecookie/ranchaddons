@@ -1,5 +1,3 @@
-from PIL.features import features
-
 from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 
@@ -8,7 +6,7 @@ class GuestFamilyData(models.Model):
     _name = 'guest.family.data'
     _description = "Family Database"
     _inherit = ['mail.thread', 'mail.activity.mixin', 'image.mixin']
-    _rec_name = 'lastname'
+    _rec_name = 'combined_name'
     member_ids = fields.One2many('family.member.data', 'family_id', string='Members')
 
     lastname = fields.Char('Last Name', required=True, tracking=True)
@@ -33,6 +31,29 @@ class GuestFamilyData(models.Model):
     reservation_ids = fields.Many2many('reservation.reservation', 'reservation_family_rel', 'family_id',
                                        'reservation_id',
                                        string='Reservations')
+    combined_name = fields.Char(string='Combined Name', compute='_compute_combined_name', store=True)
+
+
+    @api.depends('firstname', 'lastname')
+    def _compute_combined_name(self):
+        for record in self:
+            # format the datetime fields as per your requirements
+            record.combined_name = "%s - %s" % (record.firstname, record.lastname)
+
+    def create_new_reservation(self):
+        # Logic to create a reservation
+        new_reservation = self.env['reservation.reservation'].create({
+            'family_ids': [(6, 0, self.ids)],  # This will add current family into the newly created reservation
+            # populate other required fields
+        })
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'reservation.reservation',
+            'view_mode': 'form',
+            'res_id': new_reservation.id,
+        }
+
+
 class FamilyDataTag(models.Model):
     _name = 'family.data.tag'
     _description = "Family Tag table"
@@ -62,6 +83,11 @@ class FamilyMembersData(models.Model):
     horse_request = fields.Char()
     saddle_request = fields.Integer()
     is_coming = fields.Boolean(default=True)
+    reservation_member_ids = fields.One2many(
+        comodel_name='reservation.member',
+        inverse_name='member_id',
+        string='Reservation Members'
+    )
     
     @api.depends("birthdate")
     def _compute_age(self):

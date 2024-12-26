@@ -1,0 +1,27 @@
+<odoo>
+<record id="view_reservation_member_wizard_form" model="ir.ui.view">
+    <field name="name">reservation.member.wizard.form</field>
+    <field name="model">reservation.member.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Select Check-in Date Range">
+            <group>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </group>
+            <footer>
+                 <button name="action_show_members" string="Show Members" type="object" class="btn-primary"/>
+                 <button string="Cancel" class="btn-default" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+    <record id="action_reservation_member_wizard" model="ir.actions.act_window">
+    <field name="name">Show Members by Check-in Date</field>
+    <field name="res_model">reservation.member.wizard</field>
+    <field name="view_id" ref="view_reservation_member_wizard_form"/>   <!-- Note this line -->
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+<menuitem id="menu_reservation_member_wizard" name="Documents by Check-in Date" action="action_reservation_member_wizard" parent="ranch_management_base_menu"/>
+</odoo>

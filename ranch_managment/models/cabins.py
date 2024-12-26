@@ -4,6 +4,7 @@ from odoo import models, fields
 class Cabins(models.Model):
     _name = 'cabins.data'
     _description = "Cabin Database"
+    _rec_name = 'cabin_name_number'
 
     cabin_name_number = fields.Char()
     cabin_min = fields.Integer()

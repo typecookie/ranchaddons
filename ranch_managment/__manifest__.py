@@ -13,7 +13,8 @@
         'views/company_ranch_date_view.xml',
         'views/vehicles.xml',
         'views/guestview.xml',
-        'views/cabindata.xml'
+        'views/cabindata.xml',
+        'views/reservation_paperwork.xml'
     ],
     'installable': True,
     'auto_install': False,

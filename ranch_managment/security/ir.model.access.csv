@@ -14,3 +14,5 @@ access_cabins_data,access_cabins_data,model_cabins_data,base.group_user,1,1,1,1
 maintaince,cabins_maintaince,model_cabins_maintaince,base.group_user,1,1,1,1
 access_cabins_inventory,cabins_inventory,model_cabins_inventory,base.group_user,1,1,1,1
 access_reservation,access_reservation,model_reservation_reservation,base.group_user,1,1,1,1
+access_reservation_member,access_reservation_member,model_reservation_member,base.group_user,1,1,1,1
+access_reservation_member_wizard,Reservation Members Wizard Access,model_reservation_member_wizard,base.group_user,1,1,1,1
