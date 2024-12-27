@@ -36,22 +36,25 @@ class Reservation(models.Model):
                     'reservation_id': reservation.id,
                     'member_id': member.id,
                 })
+        return reservation
 
     def write(self, vals):
         # Update the Reservation first
         reservation_updated = super().write(vals)
 
-        for family in self.family_ids:
-            for member in family.member_ids:
-                existing = self.env['reservation.member'].search(
-                    [('member_id', '=', member.id), ('reservation_id', '=', self.id)])
-                if not existing:
-                    self.env['reservation.member'].create({
-                        'member_id': member.id,
-                        'reservation_id': self.id,
-                    })
+        if reservation_updated:
+            for family in self.family_ids:
+                for member in family.member_ids:
+                    existing = self.env['reservation.member'].search(
+                        [('member_id', '=', member.id), ('reservation_id', '=', self.id)])
+                    if not existing:
+                        self.env['reservation.member'].create({
+                            'member_id': member.id,
+                            'reservation_id': self.id,
+                        })
 
         return reservation_updated
+
 
 class ReservationMember(models.Model):
     _name = 'reservation.member'

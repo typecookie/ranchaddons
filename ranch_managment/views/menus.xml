@@ -8,7 +8,6 @@
        <menuitem name="Guest" id="Guest_data_menu" parent="ranch_management_base_menu" action="guest_family_action"/>
        <menuitem id = "menu_reservation_member_wizard" name = "Documents by Check-in Date" action = "action_reservation_member_wizard" parent = "ranch_management_base_menu"/>
        <menuitem name="Cabins" id="Cabin_data_menu" parent="ranch_management_base_menu" action="guest_family_action"/>
-
-
+<menuitem name="Yearly Ranch Data" id="yearly_ranch_data_menu" parent="ranch_management_base_menu" action="action_yearly_ranch_data"/>
    </data>
 </odoo>

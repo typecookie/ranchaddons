@@ -1,6 +1,6 @@
 from . import horse_data
 from . import saddle_data
-from . import company_info
+from . import yearly_ranch_data
 from . import vehicle_managment
 from . import guest
 from . import cabins
