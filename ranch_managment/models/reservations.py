@@ -19,6 +19,11 @@ class Reservation(models.Model):
     deposit_request_received = fields.Boolean()
     deposit_request_received_date = fields.Date()
     state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('cancelled', 'Cancelled')], default='draft')
+    is_driving = fields.Boolean(string="Driving?")
+    flight_number = fields.Char()
+    airport = fields.Char()
+    arrival_time = fields.Datetime()
+    departure_time = fields.Datetime()
 
     @api.depends('check_in', 'check_out')
     def _compute_reservation_dates(self):
