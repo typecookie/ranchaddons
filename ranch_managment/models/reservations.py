@@ -5,7 +5,7 @@ class Reservation(models.Model):
     _name = 'reservation.reservation'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Reservation"
-    _rec_name = 'reservation_dates'  # set _rec_name to 'reservation_dates'
+    _rec_name = 'check_in'  # set _rec_name to 'reservation_dates'
     family_ids = fields.Many2many("guest.family.data", "reservation_family_rel", "reservation_id", "family_id",
                                   string='Reservations')
     reservation_dates = fields.Char(compute='_compute_reservation_dates', readonly=True, store=True)
@@ -64,7 +64,7 @@ class Reservation(models.Model):
 class ReservationMember(models.Model):
     _name = 'reservation.member'
     _description = "Reservation Member"
-    _rec_name = 'reservation_dates'  # set _rec_name to 'reservation_dates'
+    _rec_name = 'check_in'  # set _rec_name to 'reservation_dates'
     reservation_id = fields.Many2one('reservation.reservation', string='Reservation', ondelete='cascade')
     reservation_dates = fields.Char(related='reservation_id.reservation_dates', readonly=True)
     member_id = fields.Many2one('family.member.data', string='Family Member',
