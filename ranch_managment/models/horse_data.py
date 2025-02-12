@@ -1,3 +1,5 @@
+from pyexpat import features
+
 from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 
@@ -5,10 +7,13 @@ from dateutil.relativedelta import relativedelta
 class HorseData(models.Model):
     _name = 'horse.data'
     _description = "Horse Database"
-    # _inherit = 'image.mixin'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'image.mixin']
 
     name = fields.Char('Name', required=True, tracking=True)
+    image_front = fields.Image("Front Image")
+    image_left = fields.Image("Left Image")
+    image_right = fields.Image("Right Image")
+    image_back = fields.Image("Back Image")
     horse_birth_date = fields.Date("Birthdate", tracking=True)
     age = fields.Integer(string="Age", readonly=True, compute="_compute_age")
     advanced = fields.Boolean()
@@ -51,6 +56,7 @@ class HorseVitals(models.Model):
     Temp = fields.Char(tracking=True)
     BPM = fields.Char(tracking=True)
     Notes = fields.Char(tracking=True)
+    date = fields.Date(tracking=True)
 
 
 class VetData(models.Model):

@@ -4,6 +4,7 @@ from odoo import models, fields, api, _
 class SaddleData(models.Model):
     _name = 'saddle.data'
     _description = "saddle Database"
+    _rec_name = 'rack_number'
 
     rack_number = fields.Char()
     maker = fields.Char()

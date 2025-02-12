@@ -18,6 +18,7 @@
                     <group>
                         <h1>
                             <field name="name"/>
+                            <field name="image_1920" widget="image"/>
                         </h1>
                         <group>
                             <field name="guest_use"/>
@@ -61,6 +62,12 @@
                 <field name="Notes" required="1"/>
             </tree>
         </field>
+    </page>
+    <page string="Images">
+        <field name="image_front" widget="image"/>
+        <field name="image_left" widget="image"/>
+        <field name="image_right" widget="image"/>
+        <field name="image_back" widget="image"/>
     </page>
 </notebook>
                 </sheet>

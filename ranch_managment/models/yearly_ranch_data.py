@@ -1,6 +1,6 @@
 
 from odoo import models, fields, api, _  # Ensure there’s no duplicate import here
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class YearlyRanchData(models.Model):
