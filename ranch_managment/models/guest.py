@@ -34,6 +34,8 @@ class GuestFamilyData(models.Model):
     combined_name = fields.Char(string='Combined Name', compute='_compute_combined_name', store=True)
 
 
+
+
     @api.depends('firstname', 'lastname')
     def _compute_combined_name(self):
         for record in self:
@@ -52,6 +54,22 @@ class GuestFamilyData(models.Model):
             'view_mode': 'form',
             'res_id': new_reservation.id,
         }
+
+    def write(self, vals):
+        res = super(GuestFamilyData, self).write(vals)
+        if 'reservation_ids' in vals:
+            for family in self:
+                for reservation in family.reservation_ids:
+                    # Add new members to reservations
+                    for member in family.member_ids.filtered(lambda m: m.is_coming):
+                        existing_member = self.env['reservation.member'].search(
+                            [('reservation_id', '=', reservation.id), ('member_id', '=', member.id)], limit=1)
+                        if not existing_member:
+                            self.env['reservation.member'].create({
+                                'member_id': member.id,
+                                'reservation_id': reservation.id,
+                            })
+        return res
 
 
 class FamilyDataTag(models.Model):
@@ -94,18 +112,40 @@ class FamilyMembersData(models.Model):
         res = super(FamilyMembersData, self).write(vals)
 
         for record in self:
-            family_reservations = record.family_id.reservation_ids
-            for reservation in family_reservations:
-                existing_member = self.env['reservation.member'].search(
-                    [('reservation_id', '=', reservation.id), ('member_id', '=', record.id)], limit=1)
+            # Ensure reservations are updated only if member is marked as 'coming'
+            if record.is_coming:
+                family_reservations = record.family_id.reservation_ids
+                for reservation in family_reservations:
+                    existing_member = self.env['reservation.member'].search([
+                        ('reservation_id', '=', reservation.id),
+                        ('member_id', '=', record.id)
+                    ], limit=1)
 
-                if not existing_member:
-                    self.env['reservation.member'].create({
-                        'member_id': record.id,
-                        'reservation_id': reservation.id,
-                    })
+                    # If no existing reservation member, create it
+                    if not existing_member:
+                        self.env['reservation.member'].create({
+                            'member_id': record.id,
+                            'reservation_id': reservation.id,
+                        })
 
         return res
+
+    @api.model
+    def create(self, vals):
+        # Create the family member first
+        record = super(FamilyMembersData, self).create(vals)
+
+        # If the family member is 'coming', link them to all reservations on the family
+        if record.is_coming and record.family_id:
+            family_reservations = record.family_id.reservation_ids
+            for reservation in family_reservations:
+                # Check if a reservation.member entry already exists, if not create it
+                self.env['reservation.member'].create({
+                    'member_id': record.id,
+                    'reservation_id': reservation.id,
+                })
+
+        return record
 
     @api.depends("birthdate")
     def _compute_age(self):

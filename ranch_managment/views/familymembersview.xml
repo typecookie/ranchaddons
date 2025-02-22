@@ -36,7 +36,7 @@
                         <!-- Reservation Information Tab -->
                         <page string="Reservations">
                             <field name="reservation_member_ids">
-                                 <tree editable="bottom" string="Member Reservations">
+                                 <tree string="Member Reservations" context="{'default_member_id': active_id}">
                                      <field name="check_in_str"></field>
                                      <field name="reservation_id" string="Reservation" widget="many2one"/>
                                      <field name="member_id" string="Family Member" widget="many2one"/>

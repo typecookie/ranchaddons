@@ -27,23 +27,24 @@ class Reservation(models.Model):
     arrival_time = fields.Datetime()
     departure_time = fields.Datetime()
 
-
     @api.model
     def create(self, vals):
-        reservation = super().create(vals)
-
-        for family in reservation.family_ids:
-            for member in family.member_ids:
-                # Create a record for each family member in reservation.member model
-                self.env['reservation.member'].create({
-                    'reservation_id': reservation.id,
-                    'member_id': member.id,
-                })
+        # Corrected super class name to 'Reservation'
+        reservation = super(Reservation, self).create(vals)
+        family_ids = vals.get('family_ids', [])
+        if family_ids:
+            family_records = self.env['guest.family.data'].browse(family_ids[0][2])  # Get family records
+            for family in family_records:
+                for member in family.member_ids.filtered(lambda m: m.is_coming):
+                    self.env['reservation.member'].create({
+                        'member_id': member.id,
+                        'reservation_id': reservation.id,
+                    })
         return reservation
 
     def write(self, vals):
-        # Update the Reservation first
-        reservation_updated = super().write(vals)
+        # Corrected super class name to 'Reservation'
+        reservation_updated = super(Reservation, self).write(vals)
 
         if reservation_updated:
             for family in self.family_ids:
@@ -73,8 +74,8 @@ class ReservationMember(models.Model):
     check_out = fields.Datetime(related='reservation_id.check_out', readonly=True)
 
     release_form_signed = fields.Boolean(string="Release Form Signed", default=False)
-    assigned_saddle = fields.Many2one('saddle.data', string="Assigned Saddle", default=False)
-    assigned_horse = fields.Many2one('horse.data', string="Assigned Horse", default=False)
+    assigned_saddle = fields.Many2one('saddle.data', string="Assigned Saddle", default=None)
+    assigned_horse = fields.Many2one('horse.data', string="Assigned Horse", default=None)
 
     @api.depends('reservation_id.check_in', 'check_in', 'check_out')
     def _compute_reservation_dates(self):
@@ -96,12 +97,8 @@ class ReservationMember(models.Model):
 
     @api.onchange('reservation_id')
     def _onchange_reservation_id(self):
-        """Populate related fields when reservation_id is set or changed."""
         if self.reservation_id:
-            # Example: Populate `member_id` dynamically based on the reservation
-            self.member_id = self.reservation_id.member_id.id or False
-
-            # If you have other linked fields to populate, include them here
-            self.release_form_signed = self.reservation_id.release_form_signed
-            self.assigned_saddle = self.reservation_id.default_saddle_id
-            self.assigned_horse = self.reservation_id.default_horse_id
+            self.member_id = self.reservation_id.member_id.id or None
+            self.release_form_signed = self.reservation_id.release_form_signed or False
+            self.assigned_saddle = self.reservation_id.default_saddle_id.id if self.reservation_id.default_saddle_id else None
+            self.assigned_horse = self.reservation_id.default_horse_id.id if self.reservation_id.default_horse_id else None
