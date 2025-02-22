@@ -1,0 +1,17 @@
+<record model="ir.ui.view" id="reservation_wizard_form_view">
+    <field name="name">reservation.wizard.form.view</field>
+    <field name="model">reservation.wizard</field>
+    <field name="arch" type="xml">
+        <form string="New Reservation">
+            <group>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="room_ids"/>
+            </group>
+            <footer>
+                <button name="confirm" string="Confirm" type="object" class="btn-primary"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>

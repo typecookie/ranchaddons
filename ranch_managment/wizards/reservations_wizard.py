@@ -6,6 +6,7 @@ class ReservationWizard(models.TransientModel):
 
     check_in = fields.Datetime(required=True)
     check_out = fields.Datetime(required=True)
+    room_ids = fields.Many2many('cabins.data', string='Cabins')
 
     def confirm(self):
         # Use self.env.context to get the active family id
@@ -16,5 +17,5 @@ class ReservationWizard(models.TransientModel):
             'family_ids': [(6, 0, family.ids)],
             'check_in': self.check_in,
             'check_out': self.check_out,
-            # populate other required fields
+            'room_ids': self.room_ids.ids
         })

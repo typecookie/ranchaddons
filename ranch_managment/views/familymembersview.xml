@@ -1,0 +1,85 @@
+<odoo>
+    <!-- Form View for Family Members -->
+    <record id="view_family_member_form" model="ir.ui.view">
+        <field name="name">family.member.data.form</field>
+        <field name="model">family.member.data</field>
+        <field name="arch" type="xml">
+            <form string="Family Member">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="firstname" string="First Name" required="1"/>
+                            <field name="lastname" string="Last Name" required="1"/>
+                            <field name="birthdate" string="Birthdate"/>
+                            <field name="age" string="Age" readonly="1"/>
+                            <field name="sex" string="Gender"/>
+                        </group>
+                        <group>
+                            <field name="height" string="Height"/>
+                            <field name="weight" string="Weight"/>
+                            <field name="is_coming" string="Attending?" widget="boolean"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <!-- Family Member Details -->
+                        <page string="Additional Details">
+                            <group>
+                                <field name="food_allergies" string="Food Allergies"/>
+                                <field name="dietary_needs" string="Dietary Needs"/>
+                                <field name="health_conditions" string="Health Conditions"/>
+                                <field name="health_requests" string="Health Requests"/>
+                                <field name="horse_request" string="Horse Request"/>
+                                <field name="saddle_request" string="Saddle Request"/>
+                            </group>
+                        </page>
+
+                        <!-- Reservation Information Tab -->
+                        <page string="Reservations">
+                            <field name="reservation_member_ids">
+                                 <tree editable="bottom" string="Member Reservations">
+                                     <field name="check_in_str"></field>
+                                     <field name="reservation_id" string="Reservation" widget="many2one"/>
+                                     <field name="member_id" string="Family Member" widget="many2one"/>
+                                     <field name="release_form_signed" widget="boolean" string="Release Form Signed"/>
+                                     <field name="assigned_saddle" string="Assigned Saddle" widget="many2one"/>
+                                     <field name="assigned_horse" string="Assigned Horse" widget="many2one"/>
+                                 </tree>
+
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Family Members -->
+    <record id="view_family_member_tree" model="ir.ui.view">
+        <field name="name">family.member.data.tree</field>
+        <field name="model">family.member.data</field>
+        <field name="arch" type="xml">
+            <tree string="Family Members">
+                <field name="firstname" string="First Name"/>
+                <field name="lastname" string="Last Name"/>
+                <field name="birthdate" string="Birthdate"/>
+                <field name="age" string="Age" readonly="1"/>
+                <field name="is_coming" string="Attending?" widget="boolean"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_family_member" model="ir.actions.act_window">
+        <field name="name">Family Members</field>
+        <field name="res_model">family.member.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new family member.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_family_member" name="Family Members" parent="base.menu_custom" action="action_family_member"/>
+</odoo>

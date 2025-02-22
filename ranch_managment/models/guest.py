@@ -63,6 +63,7 @@ class FamilyDataTag(models.Model):
 
 class FamilyMembersData(models.Model):
     _name = 'family.member.data'
+
     _description = "Family member Database"
     _inherit = ['mail.thread', 'mail.activity.mixin', 'image.mixin']
     _rec_name = 'firstname'
@@ -88,7 +89,24 @@ class FamilyMembersData(models.Model):
         inverse_name='member_id',
         string='Reservation Members'
     )
-    
+
+    def write(self, vals):
+        res = super(FamilyMembersData, self).write(vals)
+
+        for record in self:
+            family_reservations = record.family_id.reservation_ids
+            for reservation in family_reservations:
+                existing_member = self.env['reservation.member'].search(
+                    [('reservation_id', '=', reservation.id), ('member_id', '=', record.id)], limit=1)
+
+                if not existing_member:
+                    self.env['reservation.member'].create({
+                        'member_id': record.id,
+                        'reservation_id': reservation.id,
+                    })
+
+        return res
+
     @api.depends("birthdate")
     def _compute_age(self):
         for record in self:

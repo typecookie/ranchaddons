@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_reservation_form" model="ir.ui.view">
+        <field name="name">reservation.reservation.form</field>
+        <field name="model">reservation.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <sheet>
+                    <group>
+                        <field name="family_ids" widget="many2many_tags" />
+                        <field name="reservation_dates" readonly="1"/>
+                        <field name="check_in" />
+                        <field name="check_out" />
+                        <field name="room_ids" widget="many2many_tags" />
+                        <field name="adults" />
+                        <field name="kids" />
+                        <field name="notes" />
+                        <field name="deposit_request_sent" />
+                        <field name="deposit_request_received" />
+                        <field name="deposit_request_received_date" />
+                        <field name="state" />
+                        <field name="is_driving" />
+                        <field name="flight_number" />
+                        <field name="airport" />
+                        <field name="arrival_time" />
+                        <field name="departure_time" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+

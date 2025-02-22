@@ -15,7 +15,8 @@
         'views/guestview.xml',
         'views/cabindata.xml',
         'views/reservation_paperwork.xml',
-
+        'views/reservationview.xml',
+        'views/familymembersview.xml',
     ],
     'installable': True,
     'auto_install': False,
