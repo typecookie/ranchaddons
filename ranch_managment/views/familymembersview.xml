@@ -17,6 +17,7 @@
                         <group>
                             <field name="height" string="Height"/>
                             <field name="weight" string="Weight"/>
+                            <field name="exp"/>
                             <field name="is_coming" string="Attending?" widget="boolean"/>
                         </group>
                     </group>
