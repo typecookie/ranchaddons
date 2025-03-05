@@ -18,7 +18,7 @@
                         <field name="deposit_request_received" />
                         <field name="deposit_request_received_date" />
                         <field name="state" />
-                        <field name="is_driving" />
+                        <field name="is_driving" widget="boolean"/>
                         <field name="flight_number" />
                         <field name="airport" />
                         <field name="arrival_time" />
