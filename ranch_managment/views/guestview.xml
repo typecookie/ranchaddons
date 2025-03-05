@@ -33,9 +33,9 @@
                         <field name="country_id" />
                         <field name="zip" />
                         <field name="phone" />
-                        <field name="mobile" />
+                        <field name="phone2" />
                         <field name="email" />
-                        <field name="fax" />
+                        <field name="email2" />
                         <field name="website" />
                     </group>
                       <button name="%(ranch_managment.action_reservation_wizard)d" type="action" string="Create New Reservation"/>
