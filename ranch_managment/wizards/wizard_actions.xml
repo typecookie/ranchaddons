@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <data>
+       <!-- Action for Reservation Wizard -->
+       <record id="action_reservation_wizard" model="ir.actions.act_window">
+           <field name="name">Reservation Wizard</field>
+           <field name="res_model">reservation.wizard</field>
+           <field name="view_mode">form</field>
+           <field name="target">new</field>
+       </record>
+   </data>
+</odoo>

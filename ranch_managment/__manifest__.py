@@ -17,6 +17,9 @@
         'views/reservation_paperwork.xml',
         'views/reservationview.xml',
         'views/familymembersview.xml',
+        'wizards/wizard_actions.xml',
+        'views/menus.xml',
+
     ],
     'installable': True,
     'auto_install': False,

@@ -17,3 +17,4 @@ access_reservation,access_reservation,model_reservation_reservation,base.group_u
 access_reservation_member,access_reservation_member,model_reservation_member,base.group_user,1,1,1,1
 access_reservation_member_wizard,Reservation Members Wizard Access,model_reservation_member_wizard,base.group_user,1,1,1,1
 access_yearly_ranch_data,YEARLY_RANCH_DATA,model_yearly_ranch_data,base.group_user,1,1,1,1
+access_reservation_wizard,reservation.wizard,model_reservation_wizard,base.group_user,1,1,1,1
